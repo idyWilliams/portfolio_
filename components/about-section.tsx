@@ -39,7 +39,7 @@ export function AboutSection() {
     <SectionContainer id="about" className="relative bg-black overflow-hidden">
       <AnimatedBackground />
 
-      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
         <SlideIn direction="left">
           <div>
             <motion.h2
@@ -100,38 +100,53 @@ export function AboutSection() {
         </SlideIn>
 
         <SlideIn direction="right">
-          <div className="space-y-6">
-            <motion.h3
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-3xl font-bold mb-8 text-white"
-            >
-              Experience
-            </motion.h3>
-            {experience.map((job, index) => (
-              <AnimatedSection key={job.company} delay={index * 0.1}>
-                <motion.div
-                  whileHover={{ y: -4, boxShadow: "0 20px 25px -5px rgba(255, 255, 255, 0.1)" }}
-                  className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-6 hover:bg-white/10 transition-all"
-                >
-                  <div className="flex items-start justify-between mb-3">
-                    <div>
-                      <h4 className="text-xl font-semibold mb-1 text-white">{job.title}</h4>
-                      <p className="text-white/70 font-medium">{job.company}</p>
-                    </div>
-                    <span className="text-sm text-white/50 whitespace-nowrap">
-                      {job.period}
-                    </span>
+          <motion.div
+            whileHover={{ scale: 1.02 }}
+            className="relative rounded-2xl overflow-hidden shadow-2xl"
+          >
+            <div className="aspect-[4/5] relative">
+              <img
+                src="https://images.pexels.com/photos/5483077/pexels-photo-5483077.jpeg?auto=compress&cs=tinysrgb&w=800"
+                alt="Idorenyin Williams"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+            </div>
+          </motion.div>
+        </SlideIn>
+      </div>
+
+      <div className="relative z-10">
+        <motion.h3
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-3xl font-bold mb-12 text-white text-center"
+        >
+          Professional Experience
+        </motion.h3>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          {experience.map((job, index) => (
+            <AnimatedSection key={job.company} delay={index * 0.1}>
+              <motion.div
+                whileHover={{ y: -4, boxShadow: "0 20px 25px -5px rgba(255, 255, 255, 0.1)" }}
+                className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-6 hover:bg-white/10 transition-all h-full"
+              >
+                <div className="flex flex-col h-full">
+                  <div className="mb-4">
+                    <h4 className="text-xl font-semibold mb-2 text-white">{job.title}</h4>
+                    <p className="text-white/70 font-medium mb-2">{job.company}</p>
+                    <span className="text-sm text-white/50">{job.period}</span>
                   </div>
-                  <p className="text-white/60 leading-relaxed">
+                  <p className="text-white/60 leading-relaxed flex-1">
                     {job.description}
                   </p>
-                </motion.div>
-              </AnimatedSection>
-            ))}
-          </div>
-        </SlideIn>
+                </div>
+              </motion.div>
+            </AnimatedSection>
+          ))}
+        </div>
       </div>
     </SectionContainer>
   );

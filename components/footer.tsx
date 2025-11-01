@@ -14,10 +14,10 @@ const footerLinks = [
   {
     title: "Navigation",
     links: [
-      { label: "Home", href: "#home" },
-      { label: "About", href: "#about" },
-      { label: "Skills", href: "#skills" },
-      { label: "Projects", href: "#projects" },
+      { label: "Home", href: "/" },
+      { label: "About", href: "/#about" },
+      { label: "Skills", href: "/#skills" },
+      { label: "Projects", href: "/#projects" },
     ],
   },
   {
@@ -25,8 +25,8 @@ const footerLinks = [
     links: [
       { label: "Blog", href: "/blog" },
       { label: "GitHub", href: "https://github.com" },
-      { label: "Resume", href: "#" },
-      { label: "Contact", href: "#contact" },
+      { label: "Recommendations", href: "/#recommendations" },
+      { label: "Contact", href: "/#contact" },
     ],
   },
   {
@@ -35,7 +35,7 @@ const footerLinks = [
       { label: "LinkedIn", href: "https://linkedin.com" },
       { label: "Twitter", href: "https://twitter.com" },
       { label: "Email", href: "mailto:hello@example.com" },
-      { label: "Discord", href: "#" },
+      { label: "GitHub", href: "https://github.com" },
     ],
   },
 ];
@@ -68,7 +68,7 @@ export function Footer() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
               >
-                <h3 className="text-2xl font-bold text-white mb-2">John Doe</h3>
+                <h3 className="text-2xl font-bold text-white mb-2">Idorenyin Williams</h3>
                 <p className="text-sm text-white/60 mb-6">Full-Stack Engineer & Developer</p>
 
                 <div className="space-y-3 mb-8">
@@ -144,7 +144,7 @@ export function Footer() {
               transition={{ duration: 0.6, delay: 0.5 }}
               className="text-sm text-white/50 text-center sm:text-left"
             >
-              &copy; {currentYear} John Doe. Crafted with precision using Next.js &amp; TypeScript.
+              &copy; {currentYear} Idorenyin Williams. Crafted with precision using Next.js &amp; TypeScript.
             </motion.p>
 
             <motion.button
