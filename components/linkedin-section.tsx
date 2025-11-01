@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { SectionContainer } from "./section-container";
 import { AnimatedSection } from "./animated-section";
 import { motion } from "framer-motion";
@@ -152,10 +153,12 @@ export function LinkedInSection() {
                     className="bg-card border rounded-lg p-6 hover:shadow-xl transition-all"
                   >
                     <div className="flex items-start gap-4 mb-4">
-                      <img
+                      <Image
                         src={rec.image}
                         alt={rec.name}
                         className="w-14 h-14 rounded-full object-cover"
+                        width={56}
+                        height={56}
                       />
                       <div className="flex-1">
                         <h4 className="font-semibold text-lg">{rec.name}</h4>

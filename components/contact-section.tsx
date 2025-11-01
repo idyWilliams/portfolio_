@@ -24,19 +24,40 @@ export function ContactSection() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-    toast({
-      title: "Message sent!",
-      description: "Thank you for reaching out. I'll get back to you soon.",
-    });
-
-    setFormData({
-      name: "",
-      email: "",
-      subject: "",
-      message: "",
-    });
+      if (response.ok) {
+        toast({
+          title: "Message sent!",
+          description: "Thank you for reaching out. I'll get back to you soon.",
+        });
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
+        });
+      } else {
+        toast({
+          title: "Error sending message",
+          description: "Please try again later.",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      toast({
+        title: "Error sending message",
+        description: "Please try again later.",
+        variant: "destructive",
+      });
+    }
 
     setIsSubmitting(false);
   };
@@ -76,8 +97,8 @@ export function ContactSection() {
                 {
                   icon: Mail,
                   label: "Email",
-                  value: "hello@example.com",
-                  href: "mailto:hello@example.com",
+                  value: "widorenyin0@gmail.com",
+                  href: "mailto:widorenyin0@gmail.com",
                 },
                 {
                   icon: Phone,

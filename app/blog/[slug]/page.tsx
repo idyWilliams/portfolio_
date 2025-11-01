@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { Header } from "@/components/header";
@@ -120,10 +121,11 @@ export default function BlogPostPage() {
             </div>
 
             <div className="relative h-96 rounded-lg overflow-hidden mb-12 bg-muted">
-              <img
+              <Image
                 src={post.cover_image}
                 alt={post.title}
                 className="w-full h-full object-cover"
+                fill
               />
             </div>
 

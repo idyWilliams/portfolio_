@@ -1,8 +1,10 @@
 "use client";
 
 import { SectionContainer } from "./section-container";
+import Image from "next/image";
 import { AnimatedSection, SlideIn } from "./animated-section";
-import { Award, Briefcase, Coffee, Users } from "lucide-react";
+import { Award, Briefcase, Coffee, Users, Download } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { AnimatedBackground } from "./animated-background";
 
@@ -105,10 +107,11 @@ export function AboutSection() {
             className="relative rounded-2xl overflow-hidden shadow-2xl"
           >
             <div className="aspect-[4/5] relative">
-              <img
+              <Image
                 src="https://images.pexels.com/photos/5483077/pexels-photo-5483077.jpeg?auto=compress&cs=tinysrgb&w=800"
                 alt="Idorenyin Williams"
                 className="w-full h-full object-cover"
+                fill
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
             </div>
@@ -125,6 +128,15 @@ export function AboutSection() {
         >
           Professional Experience
         </motion.h3>
+
+        <div className="text-center mb-8">
+          <a href="/api/download-cv" download>
+            <Button variant="outline" className="gap-2">
+              <Download className="w-4 h-4" />
+              Download CV
+            </Button>
+          </a>
+        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {experience.map((job, index) => (

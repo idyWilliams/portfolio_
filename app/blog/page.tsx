@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Header } from "@/components/header";
@@ -109,10 +110,11 @@ export default function BlogPage() {
                   <Link href={`/blog/${post.slug}`}>
                     <article className="bg-card border rounded-lg overflow-hidden hover:shadow-xl transition-shadow group h-full flex flex-col">
                       <div className="relative h-48 bg-muted overflow-hidden">
-                        <img
+                        <Image
                           src={post.cover_image}
                           alt={post.title}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                          fill
                         />
                       </div>
 

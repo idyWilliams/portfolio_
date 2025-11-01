@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { SectionContainer } from "./section-container";
 import { AnimatedSection, ScaleIn } from "./animated-section";
 import { Button } from "@/components/ui/button";
@@ -50,10 +51,11 @@ export function ProjectsSection() {
           <ScaleIn key={project.id} delay={index * 0.1}>
             <div className="bg-card border rounded-lg overflow-hidden hover:shadow-xl transition-shadow group">
               <div className="relative h-64 bg-muted overflow-hidden">
-                <img
+                <Image
                   src={project.image_url}
                   alt={project.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  fill
                 />
               </div>
 
