@@ -25,7 +25,7 @@ export function HeroSection() {
       className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8"
     >
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black opacity-30 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black opacity-70 z-10" />
         <Image
           src={hero_img}
           alt="Idorenyin Williams"

@@ -6,7 +6,9 @@ import { AnimatedSection, SlideIn } from "./animated-section";
 import { Award, Briefcase, Coffee, Users, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import portrait from "@/public/img/potrait.jpeg";
 import { AnimatedBackground } from "./animated-background";
+import Link from "next/link";
 
 const stats = [
   { icon: Briefcase, label: "Years Experience", value: "5+" },
@@ -59,21 +61,55 @@ export function AboutSection() {
               className="space-y-4 text-lg text-white/70 leading-relaxed"
             >
               <p>
-                I'm a passionate full-stack engineer with over 5 years of experience building
-                exceptional digital experiences. My journey in software development has been
-                driven by a love for creating elegant solutions to complex problems.
+                I&apos;m a passionate full-stack engineer with over 5 years of
+                experience building exceptional digital experiences. My journey
+                in software development has been driven by a love for creating
+                elegant solutions to complex problems.
               </p>
               <p>
-                Specializing in modern web technologies like Next.js, TypeScript, and React,
-                I've helped startups and established companies bring their ideas to life.
-                I believe in writing clean, maintainable code and staying current with the
-                latest industry trends.
+                Specializing in modern web technologies like Next.js,
+                TypeScript, and React, I&apos;ve helped startups and established
+                companies bring their ideas to life. I believe in writing clean,
+                maintainable code and staying current with the latest industry
+                trends.
               </p>
-              <p>
-                When I'm not coding, you'll find me contributing to open-source projects,
-                writing technical articles, or exploring new technologies. I'm always eager
-                to take on challenging projects that push the boundaries of what's possible
+              {/* <p>
+                When I&apos;m not coding, you&apos;ll find me contributing to open-source projects,
+                writing technical articles, or exploring new technologies. I&apos;m always eager
+                to take on challenging projects that push the boundaries of what&apos;s possible
                 on the web.
+              </p> */}
+              <p>
+                Founding{" "}
+                <Link
+                  className="text-white font-semibold hover:underline"
+                  href={"#"}
+                >
+                  iSentry Internshp
+                </Link>{" "}
+                came from my desire to give back — to create a space where young
+                developers can gain real-world experience, learn modern
+                engineering practices, and build impactful products. Mentorship
+                and collaboration sit at the heart of everything I do; I love
+                helping others find their voice and confidence in tech.
+              </p>
+
+              <p>
+                Beyond my daily work, I’m deeply fascinated by{" "}
+                <span className="text-white font-semibold">
+                  Artificial Intelligence
+                </span>{" "}
+                and how it&apos;s shaping the future of human creativity. I
+                spend time experimenting with AI-driven tools, exploring new
+                frameworks, and learning ways to make technology more
+                human-centered and intelligent.
+              </p>
+
+              <p>
+                Whether it&apos;s building a product, mentoring a team, or
+                speaking at any event, I&apos;m driven by one simple goal — to
+                create, to inspire, and to push the boundaries of what&apos;s
+                possible through technology.
               </p>
             </motion.div>
 
@@ -92,7 +128,9 @@ export function AboutSection() {
                     >
                       <stat.icon className="w-6 h-6 text-white" />
                     </motion.div>
-                    <div className="text-2xl font-bold mb-1 text-white">{stat.value}</div>
+                    <div className="text-2xl font-bold mb-1 text-white">
+                      {stat.value}
+                    </div>
                     <div className="text-sm text-white/50">{stat.label}</div>
                   </div>
                 </AnimatedSection>
@@ -108,9 +146,9 @@ export function AboutSection() {
           >
             <div className="aspect-[4/5] relative">
               <Image
-                src="https://images.pexels.com/photos/5483077/pexels-photo-5483077.jpeg?auto=compress&cs=tinysrgb&w=800"
+                src={portrait}
                 alt="Idorenyin Williams"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover grayscale brightness-90 contrast-110"
                 fill
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
@@ -142,13 +180,20 @@ export function AboutSection() {
           {experience.map((job, index) => (
             <AnimatedSection key={job.company} delay={index * 0.1}>
               <motion.div
-                whileHover={{ y: -4, boxShadow: "0 20px 25px -5px rgba(255, 255, 255, 0.1)" }}
+                whileHover={{
+                  y: -4,
+                  boxShadow: "0 20px 25px -5px rgba(255, 255, 255, 0.1)",
+                }}
                 className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-6 hover:bg-white/10 transition-all h-full"
               >
                 <div className="flex flex-col h-full">
                   <div className="mb-4">
-                    <h4 className="text-xl font-semibold mb-2 text-white">{job.title}</h4>
-                    <p className="text-white/70 font-medium mb-2">{job.company}</p>
+                    <h4 className="text-xl font-semibold mb-2 text-white">
+                      {job.title}
+                    </h4>
+                    <p className="text-white/70 font-medium mb-2">
+                      {job.company}
+                    </p>
                     <span className="text-sm text-white/50">{job.period}</span>
                   </div>
                   <p className="text-white/60 leading-relaxed flex-1">
