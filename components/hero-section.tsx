@@ -10,14 +10,126 @@ import { useState, useEffect } from "react";
 
 export function HeroSection() {
   const [showInitials, setShowInitials] = useState(false);
+ const [animationIndex, setAnimationIndex] = useState(0);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setShowInitials((prev) => !prev);
-    }, 4000); // Flip every 4 seconds
+const animations = [
+  // 1. Coin Flip
+  {
+    exit: { rotateY: 90, opacity: 0 },
+    enter: { rotateY: -90, opacity: 0 },
+    animate: { rotateY: 0, opacity: 1 },
+    transition: { duration: 0.35, ease: [0.42, 0, 0.58, 1] },
+  },
+  // 2. Slide Out (Left/Right)
+  {
+    exit: { x: 180, opacity: 0, scale: 0.7 },
+    enter: { x: -180, opacity: 0, scale: 0.7 },
+    animate: { x: 0, opacity: 1, scale: 1 },
+    transition: { duration: 0.3, ease: [0.0, 0.0, 0.58, 1.0] },
+  },
+  // 3. Fade & Scale
+  {
+    exit: { scale: 0, opacity: 0, rotate: -180 },
+    enter: { scale: 0, opacity: 0, rotate: 180 },
+    animate: { scale: 1, opacity: 1, rotate: 0 },
+    transition: { duration: 0.4, ease: [0.34, 1.56, 0.64, 1] },
+  },
+  // 4. Swipe Vertical
+  {
+    exit: { y: -180, opacity: 0, rotateX: 90 },
+    enter: { y: 180, opacity: 0, rotateX: -90 },
+    animate: { y: 0, opacity: 1, rotateX: 0 },
+    transition: { duration: 0.35, ease: [0.42, 0, 0.58, 1] },
+  },
+  // 5. Dissolve & Zoom
+  {
+    exit: { scale: 1.5, opacity: 0, filter: "blur(15px)" },
+    enter: { scale: 0.5, opacity: 0, filter: "blur(15px)" },
+    animate: { scale: 1, opacity: 1, filter: "blur(0px)" },
+    transition: { duration: 0.45, ease: [0.42, 0, 0.58, 1] },
+  },
+  // 6. 3D Flip Horizontal
+  {
+    exit: { rotateX: 90, opacity: 0, scale: 0.8 },
+    enter: { rotateX: -90, opacity: 0, scale: 0.8 },
+    animate: { rotateX: 0, opacity: 1, scale: 1 },
+    transition: { duration: 0.35, ease: [0.42, 0, 0.58, 1] },
+  },
+  // 7. Shred Effect (Slice Y-axis)
+  {
+    exit: { scaleX: 0, opacity: 0, x: -50 },
+    enter: { scaleX: 0, opacity: 0, x: 50 },
+    animate: { scaleX: 1, opacity: 1, x: 0 },
+    transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] },
+  },
+  // 8. Spiral In/Out
+  {
+    exit: { scale: 0, rotate: 360, opacity: 0 },
+    enter: { scale: 0, rotate: -360, opacity: 0 },
+    animate: { scale: 1, rotate: 0, opacity: 1 },
+    transition: { duration: 0.5, ease: [0.34, 1.56, 0.64, 1] },
+  },
+  // 9. Elastic Bounce
+  {
+    exit: { scale: 0, opacity: 0, y: 100 },
+    enter: { scale: 0, opacity: 0, y: -100 },
+    animate: { scale: 1, opacity: 1, y: 0 },
+    transition: { duration: 0.6, ease: [0.68, -0.55, 0.265, 1.55] },
+  },
+  // 10. Glitch/Shatter
+  {
+    exit: { x: [0, -5, 5, -5, 5, 0], opacity: 0, scale: 0.9 },
+    enter: { x: [0, 5, -5, 5, -5, 0], opacity: 0, scale: 0.9 },
+    animate: { x: 0, opacity: 1, scale: 1 },
+    transition: { duration: 0.3, ease: "easeInOut" },
+  },
+  // 11. Diagonal Wipe
+  {
+    exit: { x: 150, y: -150, opacity: 0, rotate: 45 },
+    enter: { x: -150, y: 150, opacity: 0, rotate: -45 },
+    animate: { x: 0, y: 0, opacity: 1, rotate: 0 },
+    transition: { duration: 0.35, ease: [0.42, 0, 0.58, 1] },
+  },
+  // 12. Squeeze In/Out
+  {
+    exit: { scaleY: 0, scaleX: 1.3, opacity: 0 },
+    enter: { scaleY: 0, scaleX: 1.3, opacity: 0 },
+    animate: { scaleY: 1, scaleX: 1, opacity: 1 },
+    transition: { duration: 0.4, ease: [0.34, 1.56, 0.64, 1] },
+  },
+  // 13. Corner Spin
+  {
+    exit: { rotate: 90, scale: 0, x: 100, y: -100, opacity: 0 },
+    enter: { rotate: -90, scale: 0, x: -100, y: 100, opacity: 0 },
+    animate: { rotate: 0, scale: 1, x: 0, y: 0, opacity: 1 },
+    transition: { duration: 0.45, ease: [0.42, 0, 0.58, 1] },
+  },
+  // 14. Wave Distortion
+  {
+    exit: { rotateY: 180, scale: 0.8, x: -50, opacity: 0 },
+    enter: { rotateY: -180, scale: 0.8, x: 50, opacity: 0 },
+    animate: { rotateY: 0, scale: 1, x: 0, opacity: 1 },
+    transition: { duration: 0.5, ease: [0.76, 0, 0.24, 1] },
+  },
+  // 15. Door Swing
+  {
+    exit: { rotateY: -90, transformOrigin: "left", opacity: 0 },
+    enter: { rotateY: 90, transformOrigin: "right", opacity: 0 },
+    animate: { rotateY: 0, opacity: 1 },
+    transition: { duration: 0.4, ease: [0.42, 0, 0.58, 1] },
+  },
+];
 
-    return () => clearInterval(interval);
-  }, []);
+useEffect(() => {
+  const interval = setInterval(() => {
+    setShowInitials((prev) => !prev);
+    setAnimationIndex((prev) => (prev + 1) % animations.length);
+  }, 5000); // Stay for 5 seconds before changing
+
+  return () => clearInterval(interval);
+}, []);
+
+ const currentAnimation = animations[animationIndex];
 
   return (
     <section
@@ -47,17 +159,20 @@ export function HeroSection() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="inline-block mb-6"
           >
-            <div className="relative w-40 h-40 rounded-full overflow-hidden border-4 border-white shadow-2xl perspective-1000">
+            <div className="relative w-40 h-40 rounded-full overflow-hidden border-4 border-white shadow-2xl">
               <AnimatePresence mode="wait">
                 {!showInitials ? (
                   <motion.div
-                    key="image"
-                    initial={{ rotateY: 0 }}
-                    animate={{ rotateY: 0 }}
-                    exit={{ rotateY: 90 }}
-                    transition={{ duration: 0.4, ease: "easeInOut" }}
+                    key={`image-${animationIndex}`}
+                    initial={currentAnimation.enter}
+                    animate={currentAnimation.animate}
+                    exit={currentAnimation.exit}
+                    transition={currentAnimation.transition as any}
                     className="absolute inset-0"
-                    style={{ backfaceVisibility: "hidden" }}
+                    style={{
+                      backfaceVisibility: "hidden",
+                      transformStyle: "preserve-3d",
+                    }}
                   >
                     <Image
                       src={portrait}
@@ -68,31 +183,28 @@ export function HeroSection() {
                   </motion.div>
                 ) : (
                   <motion.div
-                    key="initials"
-                    initial={{ rotateY: -90 }}
-                    animate={{ rotateY: 0 }}
-                    exit={{ rotateY: 90 }}
-                    transition={{ duration: 0.4, ease: "easeInOut" }}
-                    className="absolute inset-0 bg-gradient-to-br from-gray-800 via-gray-900 to-black flex items-center justify-center"
-                    style={{ backfaceVisibility: "hidden" }}
+                    key={`logo-${animationIndex}`}
+                    initial={currentAnimation.enter}
+                    animate={currentAnimation.animate}
+                    exit={currentAnimation.exit}
+                    transition={currentAnimation.transition as any}
+                    className="absolute inset-0 flex items-center justify-center"
+                    style={{
+                      backfaceVisibility: "hidden",
+                      transformStyle: "preserve-3d",
+                    }}
                   >
-                    <motion.div
-                      initial={{ scale: 0.5, opacity: 0 }}
-                      animate={{ scale: 1, opacity: 1 }}
-                      transition={{ duration: 0.3, delay: 0.2 }}
-                      className="text-white font-bold text-6xl tracking-wider"
-                      style={{
-                        textShadow: "0 4px 20px rgba(255, 255, 255, 0.3)",
-                      }}
-                    >
-                      IW
-                    </motion.div>
+                    <Image
+                      src="/img/LOGO_DARK.png"
+                      alt="Idorenyin Williams Logo"
+                      fill
+                      className="object-cover rounded-full drop-shadow-[0_0_10px_rgba(255,255,255,0.6)]"
+                    />
                   </motion.div>
                 )}
               </AnimatePresence>
             </div>
           </motion.div>
-
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

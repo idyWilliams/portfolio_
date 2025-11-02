@@ -2,6 +2,7 @@
 
 import { Github, Linkedin, Twitter, Mail, ArrowUp, MapPin, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const socialLinks = [
   { icon: Github, href: "https://github.com", label: "GitHub" },
@@ -68,6 +69,9 @@ export function Footer() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
               >
+                <div className="mb-6">
+                  <Image src="/img/LOGO_LIGHT.png" alt="Logo" width={120} height={48} />
+                </div>
                 <h3 className="text-2xl font-bold text-white mb-2">Idorenyin Williams</h3>
                 <p className="text-sm text-white/60 mb-6">Full-Stack Engineer & Developer</p>
 

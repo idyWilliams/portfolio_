@@ -7,6 +7,8 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+import Image from 'next/image';
+
 const navItems = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
@@ -93,12 +95,19 @@ export function Header() {
               href="/"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className={cn(
-                "text-2xl font-bold",
-                !isScrolled && pathname === '/' && "text-white"
-              )}
+              className="flex items-center"
             >
-              ID
+              <Image
+                src={
+                  !isScrolled && pathname === "/"
+                    ? "/img/LOGO_DARK.png"
+                    : "/img/LOGO_LIGHT.png"
+                }
+                alt="Logo"
+                className="rounded-full grayscale brightness-90 contrast-110"
+                width={60}
+                height={20}
+              />
             </motion.a>
 
             <div className="hidden md:flex items-center gap-1 relative">
@@ -109,7 +118,7 @@ export function Header() {
                   asChild
                   className={cn(
                     "text-base relative",
-                    !isScrolled && pathname === '/' && "text-white"
+                    !isScrolled && pathname === "/" && "text-white"
                   )}
                 >
                   {item.href.startsWith("#") ? (
@@ -122,7 +131,9 @@ export function Header() {
                     >
                       <span className="relative">
                         {item.label}
-                        {((pathname === '/' && activeLink === item.href) || (item.href !== '#home' && pathname.startsWith(item.href))) && (
+                        {((pathname === "/" && activeLink === item.href) ||
+                          (item.href !== "#home" &&
+                            pathname.startsWith(item.href))) && (
                           <motion.span
                             layoutId="underline"
                             className="absolute bottom-0 left-0 w-full h-0.5 bg-current"
@@ -180,12 +191,7 @@ export function Header() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.1 }}
               >
-                <Button
-                  variant="ghost"
-                  size="lg"
-                  className="text-2xl"
-                  asChild
-                >
+                <Button variant="ghost" size="lg" className="text-2xl" asChild>
                   {item.href.startsWith("#") ? (
                     <a
                       href={item.href}
@@ -197,7 +203,10 @@ export function Header() {
                       {item.label}
                     </a>
                   ) : (
-                    <a href={item.href} onClick={() => setIsMobileMenuOpen(false)}>
+                    <a
+                      href={item.href}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
                       {item.label}
                     </a>
                   )}
