@@ -76,7 +76,8 @@ export function ContactSection() {
       <AnimatedSection className="text-center mb-16">
         <h2 className="text-4xl sm:text-5xl font-bold mb-4">Get In Touch</h2>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-          Have a project in mind or want to collaborate? I'd love to hear from you.
+          Have a project in mind or want to collaborate? I&apos;d love to hear
+          from you.
         </p>
       </AnimatedSection>
 
@@ -84,11 +85,11 @@ export function ContactSection() {
         <AnimatedSection delay={0.2}>
           <div className="space-y-8">
             <div>
-              <h3 className="text-2xl font-bold mb-6">Let's Talk</h3>
+              <h3 className="text-2xl font-bold mb-6">Let&apos;s Talk</h3>
               <p className="text-muted-foreground leading-relaxed mb-8">
-                Whether you have a question, a project idea, or just want to connect,
-                feel free to reach out. I'm always excited to discuss new opportunities
-                and collaborations.
+                Whether you have a question, a project idea, or just want to
+                connect, feel free to reach out. I&#39;m always excited to
+                discuss new opportunities and collaborations.
               </p>
             </div>
 
@@ -103,13 +104,13 @@ export function ContactSection() {
                 {
                   icon: Phone,
                   label: "Phone",
-                  value: "+1 (555) 123-4567",
-                  href: "tel:+15551234567",
+                  value: "+2348030939741",
+                  href: "tel:+2348030939741",
                 },
                 {
                   icon: MapPin,
                   label: "Location",
-                  value: "San Francisco, CA",
+                  value: "Nigeria",
                   href: "#",
                 },
               ].map((contact) => (
@@ -118,7 +119,9 @@ export function ContactSection() {
                     <contact.icon className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <p className="text-sm text-muted-foreground">{contact.label}</p>
+                    <p className="text-sm text-muted-foreground">
+                      {contact.label}
+                    </p>
                     {contact.href !== "#" ? (
                       <a
                         href={contact.href}
@@ -137,7 +140,10 @@ export function ContactSection() {
         </AnimatedSection>
 
         <AnimatedSection delay={0.4}>
-          <form onSubmit={handleSubmit} className="bg-card border rounded-lg p-8 space-y-6">
+          <form
+            onSubmit={handleSubmit}
+            className="bg-card border rounded-lg p-8 space-y-6"
+          >
             <div className="space-y-2">
               <Label htmlFor="name">Name</Label>
               <Input

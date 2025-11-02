@@ -5,10 +5,14 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 const socialLinks = [
-  { icon: Github, href: "https://github.com", label: "GitHub" },
-  { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
-  { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
-  { icon: Mail, href: "mailto:hello@example.com", label: "Email" },
+  { icon: Github, href: "https://github.com/idyWilliams", label: "GitHub" },
+  {
+    icon: Linkedin,
+    href: "https://www.linkedin.com/in/idorenyin-williams/",
+    label: "LinkedIn",
+  },
+  { icon: Twitter, href: "https://x.com/iWil_lian", label: "Twitter" },
+  { icon: Mail, href: "mailto:widorenyin0@gmail.com", label: "Email" },
 ];
 
 const footerLinks = [
@@ -33,10 +37,13 @@ const footerLinks = [
   {
     title: "Connect",
     links: [
-      { label: "LinkedIn", href: "https://linkedin.com" },
-      { label: "Twitter", href: "https://twitter.com" },
-      { label: "Email", href: "mailto:hello@example.com" },
-      { label: "GitHub", href: "https://github.com" },
+      {
+        label: "LinkedIn",
+        href: "https://www.linkedin.com/in/idorenyin-williams/",
+      },
+      { label: "Twitter", href: "https://x.com/iWil_lian" },
+      { label: "Email", href: "mailto:widorenyin0@gmail.com" },
+      { label: "GitHub", href: "https://github.com/idyWilliams" },
     ],
   },
 ];
@@ -73,12 +80,12 @@ export function Footer() {
                   <Image src="/img/LOGO_LIGHT.png" alt="Logo" width={120} height={48} />
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-2">Idorenyin Williams</h3>
-                <p className="text-sm text-white/60 mb-6">Full-Stack Engineer & Developer</p>
+                <p className="text-sm text-white/60 mb-6">Frontend Engineer & Developer</p>
 
                 <div className="space-y-3 mb-8">
                   <div className="flex items-center gap-2 text-sm text-white/80">
                     <MapPin className="w-4 h-4 text-white/40" />
-                    <span>San Francisco, CA</span>
+                    <span>Nigeria</span>
                   </div>
                   <div className="flex items-center gap-2 text-sm text-white/80">
                     <CheckCircle2 className="w-4 h-4 text-green-400/60" />

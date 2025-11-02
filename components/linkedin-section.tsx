@@ -169,7 +169,7 @@ export function LinkedInSection() {
                       </div>
                     </div>
                     <p className="text-muted-foreground leading-relaxed italic">
-                      "{rec.text}"
+                      &ldquo;{rec.text}&rdquo;
                     </p>
                   </motion.div>
                 </AnimatedSection>
