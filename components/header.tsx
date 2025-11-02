@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
@@ -19,22 +20,57 @@ export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const [activeLink, setActiveLink] = useState("#home");
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
+
+      if (pathname === '/') {
+        const sections = navItems
+          .filter((item) => item.href.startsWith("#"))
+          .map((item) => document.querySelector(item.href));
+
+        const scrollPosition = window.scrollY + 100;
+
+        for (const section of sections) {
+          if (section && section instanceof HTMLElement) {
+            if (section.offsetTop <= scrollPosition && section.offsetTop + section.offsetHeight > scrollPosition) {
+              setActiveLink(`#${section.id}`);
+              break;
+            }
+          }
+        }
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (pathname === '/' && window.location.hash) {
+      const element = document.querySelector(window.location.hash);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, [pathname]);
 
   const handleNavClick = (href: string) => {
     setIsMobileMenuOpen(false);
 
     if (href.startsWith("#")) {
-      const element = document.querySelector(href === "#home" ? "body" : href);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
+      if (pathname !== '/') {
+        router.push('/' + href);
+      } else {
+        const element = document.querySelector(href === "#home" ? "body" : href);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
       }
     }
   };
@@ -57,18 +93,24 @@ export function Header() {
               href="/"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="text-2xl font-bold"
+              className={cn(
+                "text-2xl font-bold",
+                !isScrolled && pathname === '/' && "text-white"
+              )}
             >
               ID
             </motion.a>
 
-            <div className="hidden md:flex items-center gap-1">
+            <div className="hidden md:flex items-center gap-1 relative">
               {navItems.map((item) => (
                 <Button
                   key={item.label}
                   variant="ghost"
                   asChild
-                  className="text-base"
+                  className={cn(
+                    "text-base relative",
+                    !isScrolled && pathname === '/' && "text-white"
+                  )}
                 >
                   {item.href.startsWith("#") ? (
                     <a
@@ -78,10 +120,34 @@ export function Header() {
                         handleNavClick(item.href);
                       }}
                     >
-                      {item.label}
+                      <span className="relative">
+                        {item.label}
+                        {((pathname === '/' && activeLink === item.href) || (item.href !== '#home' && pathname.startsWith(item.href))) && (
+                          <motion.span
+                            layoutId="underline"
+                            className="absolute bottom-0 left-0 w-full h-0.5 bg-current"
+                            initial={false}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                          />
+                        )}
+                      </span>
                     </a>
                   ) : (
-                    <a href={item.href}>{item.label}</a>
+                    <a href={item.href}>
+                      <span className="relative">
+                        {item.label}
+                        {pathname === item.href && (
+                          <motion.span
+                            layoutId="underline"
+                            className="absolute bottom-0 left-0 w-full h-0.5 bg-current"
+                            initial={false}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                          />
+                        )}
+                      </span>
+                    </a>
                   )}
                 </Button>
               ))}
