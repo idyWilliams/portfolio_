@@ -13,6 +13,8 @@ import {
   ChevronRight,
   Calendar,
   MapPin,
+  GitCommit,
+  Github,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
@@ -20,33 +22,13 @@ import portrait from "@/public/img/potrait.jpeg";
 import { AnimatedBackground } from "./animated-background";
 import Link from "next/link";
 import { Badge } from "./ui/badge";
+import { useEffect, useState } from "react";
 
-const stats = [
-  { icon: Briefcase, label: "Years Experience", value: "5+" },
-  { icon: Award, label: "Projects Completed", value: "50+" },
-  { icon: Users, label: "Happy Clients", value: "30+" },
-  { icon: Coffee, label: "Cups of Coffee", value: "1000+" },
-];
-
-// const experience = [
-//   {
-//     title: "Senior Full-Stack Developer",
-//     company: "Tech Innovators Inc.",
-//     period: "2022 - Present",
-//     description: "Leading development of enterprise-scale applications using Next.js, TypeScript, and cloud infrastructure. Mentoring junior developers and architecting scalable solutions.",
-//   },
-//   {
-//     title: "Full-Stack Developer",
-//     company: "Digital Solutions Co.",
-//     period: "2020 - 2022",
-//     description: "Built responsive web applications and RESTful APIs. Collaborated with cross-functional teams to deliver high-quality products on time.",
-//   },
-//   {
-//     title: "Frontend Developer",
-//     company: "Creative Agency",
-//     period: "2019 - 2020",
-//     description: "Developed modern, user-friendly interfaces using React and modern CSS frameworks. Improved application performance by 40%.",
-//   },
+// const stats = [
+//   { icon: Briefcase, label: "Years Experience", value: "5+" },
+//   { icon: Award, label: "Projects Completed", value: "50+" },
+//   { icon: Users, label: "Happy Clients", value: "30+" },
+//   { icon: Coffee, label: "Cups of Coffee", value: "1000+" },
 // ];
 
 const experience = [
@@ -180,6 +162,68 @@ const experience = [
 ];
 
 export function AboutSection() {
+  const [stats, setStats] = useState({
+    commits: "...",
+    repos: "...",
+    loading: true,
+  });
+
+  useEffect(() => {
+    async function fetchStats() {
+      try {
+        const response = await fetch("/api/github-stats");
+        const data = await response.json();
+
+        setStats({
+          commits: data.totalCommits.toLocaleString(),
+          repos: data.totalRepos.toString(),
+          loading: false,
+        });
+      } catch (error) {
+        setStats({
+          commits: "1000+",
+          repos: "25+",
+          loading: false,
+        });
+      }
+    }
+
+    fetchStats();
+  }, []);
+
+  const statsData = [
+    {
+      icon: Briefcase,
+      label: "Years Experience",
+      value: "5+",
+      color: "text-blue-500",
+      link: null,
+    },
+    {
+      icon: GitCommit,
+      label: "Total Commits",
+      value: stats.commits,
+      color: "text-orange-500",
+      link: "https://github.com/idyWilliams",
+      loading: stats.loading,
+    },
+    {
+      icon: Users,
+      label: "Happy Clients",
+      value: "30+",
+      color: "text-green-500",
+      link: null,
+    },
+    {
+      icon: Github,
+      label: "GitHub Repos",
+      value: stats.repos,
+      color: "text-[#6e5494]",
+      link: "https://github.com/idyWilliams?tab=repositories",
+      loading: stats.loading,
+    },
+  ];
+
   return (
     <SectionContainer id="about" className="relative bg-black overflow-hidden">
       <AnimatedBackground />
@@ -260,22 +304,31 @@ export function AboutSection() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-12"
             >
-              {stats.map((stat, index) => (
-                <AnimatedSection key={stat.label} delay={index * 0.1}>
-                  <div className="text-center">
-                    <motion.div
-                      whileHover={{ scale: 1.1 }}
-                      className="w-12 h-12 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center mx-auto mb-3"
+              {statsData.map((stat, index) => {
+                const Component = stat.link ? "a" : "div";
+                return (
+                  <AnimatedSection key={stat.label} delay={index * 0.1}>
+                    <Component
+                      // key={stat.label}
+                      href={stat.link || undefined}
+                      target={stat.link ? "_blank" : undefined}
+                      rel={stat.link ? "noopener noreferrer" : undefined}
+                      className="text-center"
                     >
-                      <stat.icon className="w-6 h-6 text-white" />
-                    </motion.div>
-                    <div className="text-2xl font-bold mb-1 text-white">
-                      {stat.value}
-                    </div>
-                    <div className="text-sm text-white/50">{stat.label}</div>
-                  </div>
-                </AnimatedSection>
-              ))}
+                      <motion.div
+                        whileHover={{ scale: 1.1 }}
+                        className="w-12 h-12 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center mx-auto mb-3"
+                      >
+                        <stat.icon className="w-6 h-6 text-white" />
+                      </motion.div>
+                      <div className="text-2xl font-bold mb-1 text-white">
+                        {stat.value}
+                      </div>
+                      <div className="text-sm text-white/50">{stat.label}</div>
+                    </Component>
+                  </AnimatedSection>
+                );
+              })}
             </motion.div>
           </div>
         </SlideIn>

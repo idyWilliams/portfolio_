@@ -25,7 +25,6 @@ export function ContactSection() {
     setIsSubmitting(true);
 
     try {
-      // ✅ Web3Forms API endpoint
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
@@ -38,7 +37,6 @@ export function ContactSection() {
           email: formData.email,
           subject: formData.subject,
           message: formData.message,
-        
           from_name: "Portfolio Contact Form",
           replyto: formData.email,
         }),
@@ -51,7 +49,6 @@ export function ContactSection() {
           title: "Message sent successfully! 🎉",
           description: "Thank you for reaching out. I'll get back to you soon.",
         });
-        // Reset form
         setFormData({
           name: "",
           email: "",
@@ -82,6 +79,40 @@ export function ContactSection() {
     }));
   };
 
+  // ✅ Contact info with brand colors
+  const contactInfo = [
+    {
+      icon: Mail,
+      label: "Email",
+      value: "widorenyin0@gmail.com",
+      href: "mailto:widorenyin0@gmail.com",
+      description: "Send me an email",
+      hoverColor: "group-hover:bg-[#EA4335]/10", // Gmail red
+      iconHoverColor: "group-hover:text-[#EA4335]", // Gmail red
+      bgHoverColor: "group-hover:bg-[#EA4335]/20",
+    },
+    {
+      icon: Linkedin,
+      label: "LinkedIn",
+      value: "Let's Connect",
+      href: "https://linkedin.com/in/idorenyin-williams",
+      description: "Connect with me professionally",
+      hoverColor: "group-hover:bg-[#0A66C2]/10", // LinkedIn blue
+      iconHoverColor: "group-hover:text-[#0A66C2]", // LinkedIn blue
+      bgHoverColor: "group-hover:bg-[#0A66C2]/20",
+    },
+    {
+      icon: MapPin,
+      label: "Location",
+      value: "Nigeria",
+      href: "#",
+      description: "Available for remote work worldwide",
+      hoverColor: "group-hover:bg-[#34A853]/10", // Google Maps green
+      iconHoverColor: "group-hover:text-[#34A853]", // Google Maps green
+      bgHoverColor: "group-hover:bg-[#34A853]/20",
+    },
+  ];
+
   return (
     <SectionContainer id="contact">
       <AnimatedSection className="text-center mb-16">
@@ -105,36 +136,20 @@ export function ContactSection() {
             </div>
 
             <div className="space-y-6">
-              {[
-                {
-                  icon: Mail,
-                  label: "Email",
-                  value: "widorenyin0@gmail.com",
-                  href: "mailto:widorenyin0@gmail.com",
-                  description: "Send me an email",
-                },
-                {
-                  icon: Linkedin,
-                  label: "LinkedIn",
-                  value: "Let's Connect",
-                  href: "https://linkedin.com/in/idorenyin-williams",
-                  description: "Connect with me professionally",
-                },
-                {
-                  icon: MapPin,
-                  label: "Location",
-                  value: "Nigeria",
-                  href: "#",
-                  description: "Available for remote work worldwide",
-                },
-              ].map((contact) => (
+              {contactInfo.map((contact) => (
                 <div
                   key={contact.label}
-                  className="flex items-start gap-4 group"
+                  className="flex items-start gap-4 group cursor-pointer"
                 >
-                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
-                    <contact.icon className="w-6 h-6 text-primary" />
+                  {/* Icon container with brand-specific hover colors */}
+                  <div
+                    className={`w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 transition-all duration-300 ${contact.bgHoverColor}`}
+                  >
+                    <contact.icon
+                      className={`w-6 h-6 text-primary transition-colors duration-300 ${contact.iconHoverColor}`}
+                    />
                   </div>
+
                   <div className="flex-1">
                     <p className="text-sm text-muted-foreground mb-1">
                       {contact.label}
@@ -150,17 +165,23 @@ export function ContactSection() {
                             ? "noopener noreferrer"
                             : undefined
                         }
-                        className="font-medium hover:text-primary transition-colors inline-flex items-center gap-2 group"
+                        className={`font-medium transition-colors duration-300 inline-flex items-center gap-2 ${contact.iconHoverColor}`}
                       >
                         {contact.value}
                         {contact.label === "LinkedIn" && (
-                          <span className="text-xs text-muted-foreground group-hover:text-primary transition-colors">
+                          <span
+                            className={`text-xs text-muted-foreground transition-colors duration-300 ${contact.iconHoverColor}`}
+                          >
                             →
                           </span>
                         )}
                       </a>
                     ) : (
-                      <p className="font-medium">{contact.value}</p>
+                      <p
+                        className={`font-medium transition-colors duration-300 ${contact.iconHoverColor}`}
+                      >
+                        {contact.value}
+                      </p>
                     )}
                     {contact.description && (
                       <p className="text-xs text-muted-foreground mt-1">

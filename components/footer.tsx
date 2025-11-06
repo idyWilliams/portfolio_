@@ -29,7 +29,7 @@ const footerLinks = [
     title: "Resources",
     links: [
       { label: "Blog", href: "/blog" },
-      { label: "GitHub", href: "https://github.com" },
+      { label: "GitHub", href: "https://github.com/idyWilliams" },
       { label: "Recommendations", href: "/#recommendations" },
       { label: "Contact", href: "/#contact" },
     ],
@@ -102,7 +102,7 @@ export function Footer() {
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.15, y: -4 }}
                       whileTap={{ scale: 0.95 }}
-                      className="w-11 h-11 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white hover:text-black transition-all flex items-center justify-center group"
+                      className="w-11 h-11 rounded-full bg-white/60 backdrop-blur-sm border border-white/20 hover:bg-white hover:text-black transition-all flex items-center justify-center group"
                       aria-label={social.label}
                     >
                       <social.icon className="w-5 h-5" />
