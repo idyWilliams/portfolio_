@@ -109,24 +109,84 @@ export default function BlogPage() {
                 <ScaleIn key={post.id} delay={index * 0.1}>
                   <Link href={`/blog/${post.slug}`}>
                     <article className="bg-card border rounded-lg overflow-hidden hover:shadow-xl transition-shadow group h-full flex flex-col">
-                      <div className="relative h-48 bg-muted overflow-hidden">
-                        <Image
-                          src={post.cover_image}
-                          alt={post.title}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                          fill
-                        />
+                      <div className="relative h-48 overflow-hidden bg-gradient-to-br from-slate-100 via-slate-50 to-slate-100 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
+                        {post.cover_image ? (
+                          <Image
+                            src={post.cover_image}
+                            alt={post.title}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            fill
+                          />
+                        ) : (
+                          <div className="w-full h-full flex flex-col items-center justify-center gap-3 relative">
+                            {/* Background Pattern */}
+                            <div className="absolute inset-0 opacity-[0.02]">
+                              <svg width="100%" height="100%">
+                                <pattern
+                                  id="pattern"
+                                  x="0"
+                                  y="0"
+                                  width="40"
+                                  height="40"
+                                  patternUnits="userSpaceOnUse"
+                                >
+                                  <circle
+                                    cx="20"
+                                    cy="20"
+                                    r="1.5"
+                                    fill="currentColor"
+                                  />
+                                </pattern>
+                                <rect
+                                  width="100%"
+                                  height="100%"
+                                  fill="url(#pattern)"
+                                />
+                              </svg>
+                            </div>
+
+                            {/* Icon */}
+                            <div className="relative z-10 text-muted-foreground/40">
+                              <svg
+                                className="w-20 h-20"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={1.5}
+                                  d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                                />
+                              </svg>
+                            </div>
+
+                            <span className="text-sm font-medium text-muted-foreground/60 relative z-10">
+                              No cover image available
+                            </span>
+                          </div>
+                        )}
                       </div>
 
                       <div className="p-6 flex-1 flex flex-col">
                         <div className="flex items-center gap-4 text-sm text-muted-foreground mb-3">
                           <span className="flex items-center gap-1">
                             <Calendar className="w-4 h-4" />
-                            {new Date(post.published_at).toLocaleDateString("en-US", {
-                              month: "short",
-                              day: "numeric",
-                              year: "numeric",
-                            })}
+                            {post.published_at ? (
+                              new Date(post.published_at).toLocaleDateString(
+                                "en-US",
+                                {
+                                  month: "short",
+                                  day: "numeric",
+                                  year: "numeric",
+                                }
+                              )
+                            ) : (
+                              <span className="text-muted-foreground">
+                                Unknown
+                              </span>
+                            )}
                           </span>
                           <span className="flex items-center gap-1">
                             <Clock className="w-4 h-4" />
