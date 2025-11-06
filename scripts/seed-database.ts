@@ -1,41 +1,91 @@
-import { createClient } from '@supabase/supabase-js';
-import { sampleProjects, sampleBlogPosts } from '../lib/seed-data';
+// scripts/seed-database.ts
+import { createClient } from "@supabase/supabase-js";
+import * as dotenv from "dotenv";
+import { fileURLToPath } from "url";
+import { dirname, join } from "path";
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+dotenv.config({ path: join(__dirname, "../.env.local") });
 
-const supabase = createClient(supabaseUrl, supabaseAnonKey);
+import { sampleProjects, sampleBlogPosts } from "../lib/seed-data.js";
 
-async function seedDatabase() {
-  console.log('Starting database seeding...');
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+// ✅ Use service role key for seeding (bypasses RLS)
+const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-  console.log('Seeding projects...');
-  for (const project of sampleProjects) {
-    const { error } = await supabase
-      .from('projects')
-      .insert(project);
-
-    if (error) {
-      console.error(`Error inserting project ${project.title}:`, error);
-    } else {
-      console.log(`✓ Inserted project: ${project.title}`);
-    }
-  }
-
-  console.log('\nSeeding blog posts...');
-  for (const post of sampleBlogPosts) {
-    const { error } = await supabase
-      .from('blog_posts')
-      .insert(post);
-
-    if (error) {
-      console.error(`Error inserting blog post ${post.title}:`, error);
-    } else {
-      console.log(`✓ Inserted blog post: ${post.title}`);
-    }
-  }
-
-  console.log('\n✅ Database seeding completed!');
+if (!supabaseUrl || !supabaseKey) {
+  console.error("❌ Missing environment variables!");
+  console.error(
+    "Required: NEXT_PUBLIC_SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY"
+  );
+  process.exit(1);
 }
 
-seedDatabase().catch(console.error);
+// ✅ Create client with service role key
+const supabase = createClient(supabaseUrl, supabaseKey, {
+  auth: {
+    autoRefreshToken: false,
+    persistSession: false,
+  },
+});
+
+async function seedDatabase() {
+  console.log("🌱 Starting database seeding...\n");
+
+  try {
+    // Delete existing data
+    console.log("🗑️  Deleting existing projects...");
+    const { error: deleteProjectsError } = await supabase
+      .from("projects")
+      .delete()
+      .gte("id", "00000000-0000-0000-0000-000000000000");
+
+    if (deleteProjectsError) throw deleteProjectsError;
+    console.log("✅ Projects deleted");
+
+    console.log("🗑️  Deleting existing blog posts...");
+    const { error: deletePostsError } = await supabase
+      .from("blog_posts")
+      .delete()
+      .gte("id", "00000000-0000-0000-0000-000000000000");
+
+    if (deletePostsError) throw deletePostsError;
+    console.log("✅ Blog posts deleted\n");
+
+    // Seed projects
+    console.log("📦 Seeding projects...");
+    const { data: projects, error: projectsError } = await supabase
+      .from("projects")
+      .insert(sampleProjects)
+      .select();
+
+    if (projectsError) throw projectsError;
+
+    console.log(`✅ Inserted ${projects?.length || 0} projects`);
+    projects?.forEach((project) => {
+      console.log(`   • ${project.title}`);
+    });
+
+    // Seed blog posts
+    console.log("\n📝 Seeding blog posts...");
+    const { data: posts, error: postsError } = await supabase
+      .from("blog_posts")
+      .insert(sampleBlogPosts)
+      .select();
+
+    if (postsError) throw postsError;
+
+    console.log(`✅ Inserted ${posts?.length || 0} blog posts`);
+    posts?.forEach((post) => {
+      console.log(`   • ${post.title}`);
+    });
+
+    console.log("\n🎉 Database seeding completed successfully!");
+  } catch (error) {
+    console.error("\n❌ Error:", error);
+    process.exit(1);
+  }
+}
+
+seedDatabase();
