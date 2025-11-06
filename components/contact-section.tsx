@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin, Linkedin, Send, Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 export function ContactSection() {
@@ -25,19 +25,33 @@ export function ContactSection() {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("/api/contact", {
+      // ✅ Web3Forms API endpoint
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Accept: "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY,
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+        
+          from_name: "Portfolio Contact Form",
+          replyto: formData.email,
+        }),
       });
 
-      if (response.ok) {
+      const result = await response.json();
+
+      if (result.success) {
         toast({
-          title: "Message sent!",
+          title: "Message sent successfully! 🎉",
           description: "Thank you for reaching out. I'll get back to you soon.",
         });
+        // Reset form
         setFormData({
           name: "",
           email: "",
@@ -45,21 +59,18 @@ export function ContactSection() {
           message: "",
         });
       } else {
-        toast({
-          title: "Error sending message",
-          description: "Please try again later.",
-          variant: "destructive",
-        });
+        throw new Error("Failed to send message");
       }
     } catch (error) {
       toast({
-        title: "Error sending message",
-        description: "Please try again later.",
+        title: "Oops! Something went wrong",
+        description:
+          "Please try again or email me directly at widorenyin0@gmail.com",
         variant: "destructive",
       });
+    } finally {
+      setIsSubmitting(false);
     }
-
-    setIsSubmitting(false);
   };
 
   const handleChange = (
@@ -85,7 +96,7 @@ export function ContactSection() {
         <AnimatedSection delay={0.2}>
           <div className="space-y-8">
             <div>
-              <h3 className="text-2xl font-bold mb-6">Let&apos;s Talk</h3>
+              <h3 className="text-2xl font-bold mb-6">Let&apos;s Connect</h3>
               <p className="text-muted-foreground leading-relaxed mb-8">
                 Whether you have a question, a project idea, or just want to
                 connect, feel free to reach out. I&#39;m always excited to
@@ -100,41 +111,81 @@ export function ContactSection() {
                   label: "Email",
                   value: "widorenyin0@gmail.com",
                   href: "mailto:widorenyin0@gmail.com",
+                  description: "Send me an email",
                 },
                 {
-                  icon: Phone,
-                  label: "Phone",
-                  value: "+2348030939741",
-                  href: "tel:+2348030939741",
+                  icon: Linkedin,
+                  label: "LinkedIn",
+                  value: "Let's Connect",
+                  href: "https://linkedin.com/in/idorenyin-williams",
+                  description: "Connect with me professionally",
                 },
                 {
                   icon: MapPin,
                   label: "Location",
                   value: "Nigeria",
                   href: "#",
+                  description: "Available for remote work worldwide",
                 },
               ].map((contact) => (
-                <div key={contact.label} className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                <div
+                  key={contact.label}
+                  className="flex items-start gap-4 group"
+                >
+                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
                     <contact.icon className="w-6 h-6 text-primary" />
                   </div>
-                  <div>
-                    <p className="text-sm text-muted-foreground">
+                  <div className="flex-1">
+                    <p className="text-sm text-muted-foreground mb-1">
                       {contact.label}
                     </p>
                     {contact.href !== "#" ? (
                       <a
                         href={contact.href}
-                        className="font-medium hover:text-primary transition-colors"
+                        target={
+                          contact.label === "LinkedIn" ? "_blank" : undefined
+                        }
+                        rel={
+                          contact.label === "LinkedIn"
+                            ? "noopener noreferrer"
+                            : undefined
+                        }
+                        className="font-medium hover:text-primary transition-colors inline-flex items-center gap-2 group"
                       >
                         {contact.value}
+                        {contact.label === "LinkedIn" && (
+                          <span className="text-xs text-muted-foreground group-hover:text-primary transition-colors">
+                            →
+                          </span>
+                        )}
                       </a>
                     ) : (
                       <p className="font-medium">{contact.value}</p>
                     )}
+                    {contact.description && (
+                      <p className="text-xs text-muted-foreground mt-1">
+                        {contact.description}
+                      </p>
+                    )}
                   </div>
                 </div>
               ))}
+            </div>
+
+            {/* Quick Stats */}
+            <div className="pt-8 border-t border-border">
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <p className="text-2xl font-bold text-primary">24h</p>
+                  <p className="text-sm text-muted-foreground">
+                    Average Response Time
+                  </p>
+                </div>
+                <div>
+                  <p className="text-2xl font-bold text-primary">5+ Years</p>
+                  <p className="text-sm text-muted-foreground">Experience</p>
+                </div>
+              </div>
             </div>
           </div>
         </AnimatedSection>
@@ -142,61 +193,97 @@ export function ContactSection() {
         <AnimatedSection delay={0.4}>
           <form
             onSubmit={handleSubmit}
-            className="bg-card border rounded-lg p-8 space-y-6"
+            className="bg-card border rounded-lg p-8 space-y-6 shadow-lg"
           >
             <div className="space-y-2">
-              <Label htmlFor="name">Name</Label>
+              <Label htmlFor="name">
+                Name <span className="text-destructive">*</span>
+              </Label>
               <Input
                 id="name"
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
-                placeholder="Your name"
+                placeholder="John Doe"
                 required
+                disabled={isSubmitting}
               />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email">
+                Email <span className="text-destructive">*</span>
+              </Label>
               <Input
                 id="email"
                 name="email"
                 type="email"
                 value={formData.email}
                 onChange={handleChange}
-                placeholder="your.email@example.com"
+                placeholder="john@example.com"
                 required
+                disabled={isSubmitting}
               />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="subject">Subject</Label>
+              <Label htmlFor="subject">
+                Subject <span className="text-destructive">*</span>
+              </Label>
               <Input
                 id="subject"
                 name="subject"
                 value={formData.subject}
                 onChange={handleChange}
-                placeholder="What is this about?"
+                placeholder="Project Inquiry / Collaboration / Question"
                 required
+                disabled={isSubmitting}
               />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="message">Message</Label>
+              <Label htmlFor="message">
+                Message <span className="text-destructive">*</span>
+              </Label>
               <Textarea
                 id="message"
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
-                placeholder="Tell me more about your project..."
+                placeholder="Tell me more about your project or what you'd like to discuss..."
                 rows={6}
                 required
+                disabled={isSubmitting}
+                className="resize-none"
               />
+              <p className="text-xs text-muted-foreground">
+                {formData.message.length} / 500 characters
+              </p>
             </div>
 
-            <Button type="submit" className="w-full" disabled={isSubmitting}>
-              {isSubmitting ? "Sending..." : "Send Message"}
+            <Button
+              type="submit"
+              className="w-full gap-2"
+              disabled={isSubmitting}
+              size="lg"
+            >
+              {isSubmitting ? (
+                <>
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                  Sending...
+                </>
+              ) : (
+                <>
+                  <Send className="w-4 h-4" />
+                  Send Message
+                </>
+              )}
             </Button>
+
+            <p className="text-xs text-center text-muted-foreground">
+              Your information is safe and will only be used to respond to your
+              message.
+            </p>
           </form>
         </AnimatedSection>
       </div>

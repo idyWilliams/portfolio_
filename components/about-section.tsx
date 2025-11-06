@@ -3,12 +3,23 @@
 import { SectionContainer } from "./section-container";
 import Image from "next/image";
 import { AnimatedSection, SlideIn } from "./animated-section";
-import { Award, Briefcase, Coffee, Users, Download } from "lucide-react";
+import {
+  Award,
+  Briefcase,
+  Coffee,
+  Users,
+  Download,
+  Sparkles,
+  ChevronRight,
+  Calendar,
+  MapPin,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import portrait from "@/public/img/potrait.jpeg";
 import { AnimatedBackground } from "./animated-background";
 import Link from "next/link";
+import { Badge } from "./ui/badge";
 
 const stats = [
   { icon: Briefcase, label: "Years Experience", value: "5+" },
@@ -17,24 +28,154 @@ const stats = [
   { icon: Coffee, label: "Cups of Coffee", value: "1000+" },
 ];
 
+// const experience = [
+//   {
+//     title: "Senior Full-Stack Developer",
+//     company: "Tech Innovators Inc.",
+//     period: "2022 - Present",
+//     description: "Leading development of enterprise-scale applications using Next.js, TypeScript, and cloud infrastructure. Mentoring junior developers and architecting scalable solutions.",
+//   },
+//   {
+//     title: "Full-Stack Developer",
+//     company: "Digital Solutions Co.",
+//     period: "2020 - 2022",
+//     description: "Built responsive web applications and RESTful APIs. Collaborated with cross-functional teams to deliver high-quality products on time.",
+//   },
+//   {
+//     title: "Frontend Developer",
+//     company: "Creative Agency",
+//     period: "2019 - 2020",
+//     description: "Developed modern, user-friendly interfaces using React and modern CSS frameworks. Improved application performance by 40%.",
+//   },
+// ];
+
 const experience = [
   {
-    title: "Senior Full-Stack Developer",
-    company: "Tech Innovators Inc.",
-    period: "2022 - Present",
-    description: "Leading development of enterprise-scale applications using Next.js, TypeScript, and cloud infrastructure. Mentoring junior developers and architecting scalable solutions.",
+    title: "Senior Frontend Engineer | CTO",
+    company: "Isentry Technologies",
+    location: "Nigeria",
+    period: "Feb 2022 - Present",
+    description:
+      "Acting as the bridge between business goals and technical execution, architecting scalable front-end and back-end systems with focus on performance and security. Mentoring engineers, driving adoption of modern frameworks, and overseeing systems deployments for high availability. Leading digital transformation projects across industries.",
+    highlights: [
+      "Architect front-end and back-end systems with focus on performance, security, and maintainability",
+      "Mentor engineers and introduce standards for clean code, testing, and documentation",
+      "Drive adoption of modern frameworks and practices within the development team",
+      "Oversee systems deployments and optimize infrastructure for high availability",
+    ],
+    technologies: [
+      "React",
+      "TypeScript",
+      "Node.js",
+      "System Architecture",
+      "Team Leadership",
+    ],
   },
   {
-    title: "Full-Stack Developer",
-    company: "Digital Solutions Co.",
-    period: "2020 - 2022",
-    description: "Built responsive web applications and RESTful APIs. Collaborated with cross-functional teams to deliver high-quality products on time.",
+    title: "Senior React Developer",
+    company: "Carter Consulting Ltd",
+    location: "Abuja, Nigeria",
+    period: "Dec 2022 - Mar 2025",
+    description:
+      "Engineered complex government platforms with React and TypeScript, ensuring performance, accessibility, and secure API integration. Led code reviews and boosted application performance by 40% through optimization techniques including lazy loading and code splitting.",
+    highlights: [
+      "Boosted application performance by 40% via lazy loading, code splitting, and analysis",
+      "Led peer code reviews and ensured robust testing using Jest and React Testing Library",
+      "Delivered UI improvements that enhanced user satisfaction and reduced support queries",
+      "Integrated REST APIs and coordinated with backend teams for seamless functionality",
+    ],
+    technologies: [
+      "React",
+      "TypeScript",
+      "Jest",
+      "React Testing Library",
+      "REST APIs",
+    ],
   },
   {
-    title: "Frontend Developer",
-    company: "Creative Agency",
-    period: "2019 - 2020",
-    description: "Developed modern, user-friendly interfaces using React and modern CSS frameworks. Improved application performance by 40%.",
+    title: "Frontend Engineer",
+    company: "RI Software",
+    location: "Ukraine (Remote)",
+    period: "Sept 2024 - Jan 2025",
+    description:
+      "Developed modular, reusable UI components for high-profile client-facing applications, implementing multi-language support and interactive onboarding flows. Refactored legacy code to improve maintainability and performance, resulting in streamlined user experience.",
+    highlights: [
+      "Implemented guided onboarding flow reducing friction and increasing user activation",
+      "Integrated multi-language support (English, Ukrainian, Russian) for international clients",
+      "Developed interactive in-app guidance system with step-by-step walk-throughs",
+      "Refactored legacy code improving maintainability and performance significantly",
+    ],
+    technologies: [
+      "React",
+      "TypeScript",
+      "i18n",
+      "UI/UX Design",
+      "Component Architecture",
+    ],
+  },
+  {
+    title: "Frontend Software Engineer",
+    company: "Dataphyte Foundation",
+    location: "Abuja, Nigeria",
+    period: "Mar 2023 - Dec 2023",
+    description:
+      "Built dynamic data visualization dashboards using React, D3.js, and TypeScript. Reduced bundle size by 40% and achieved 85% test coverage, elevating code reliability. Played key role in implementing CI/CD pipelines for faster release cycles.",
+    highlights: [
+      "Reduced bundle size by 40%, accelerating load times and improving user experience",
+      "Achieved 85% test coverage, elevating code reliability and deployment confidence",
+      "Built dynamic data visualization dashboards using React, D3.js, and TypeScript",
+      "Implemented CI/CD pipelines for faster release cycles",
+    ],
+    technologies: [
+      "React",
+      "D3.js",
+      "TypeScript",
+      "CI/CD",
+      "Data Visualization",
+    ],
+  },
+  {
+    title: "MERN Stack Developer",
+    company: "Punch Group",
+    location: "San Francisco, CA (Remote)",
+    period: "Aug 2022 - Mar 2023",
+    description:
+      "Developed and maintained real-time admin dashboards with React and WebSocket integrations. Ensured WCAG accessibility standards and built reusable UI components that accelerated development for future sprints.",
+    highlights: [
+      "Developed real-time admin dashboards with React and WebSocket integrations",
+      "Ensured accessibility (WCAG standards) and responsiveness across device types",
+      "Built reusable UI components, speeding up development for future sprints",
+      "Partnered with designers and QA teams to ship bug-free, user-friendly features",
+    ],
+    technologies: [
+      "MongoDB",
+      "Express",
+      "React",
+      "Node.js",
+      "WebSocket",
+      "WCAG",
+    ],
+  },
+  {
+    title: "Frontend Engineer",
+    company: "Trusted Transfer (TTFCX)",
+    location: "Sheffield, UK (Remote)",
+    period: "Dec 2021 - Oct 2022",
+    description:
+      "Designed and implemented a new user interface for a data-intensive FinTech platform, resulting in 20% increase in user engagement. Developed automated testing framework that led to 30% reduction in bug reports and implemented real-time financial data updates.",
+    highlights: [
+      "Increased user engagement by 20% through redesigned UI for FinTech platform",
+      "Reduced bug reports by 30% via automated testing framework using React Testing Library",
+      "Implemented real-time financial data updates enhancing platform responsiveness",
+      "Decreased bug-related support tickets by 30% through UI/UX optimizations",
+    ],
+    technologies: [
+      "React",
+      "TypeScript",
+      "React Testing Library",
+      "FinTech",
+      "Real-time Data",
+    ],
   },
 ];
 
@@ -87,7 +228,7 @@ export function AboutSection() {
                 >
                   iSentry Internshp
                 </Link>{" "}
-                came from my desire to give back — to create a space where young
+                came from my desire to give back to create a space where young
                 developers can gain real-world experience, learn modern
                 engineering practices, and build impactful products. Mentorship
                 and collaboration sit at the heart of everything I do; I love
@@ -157,7 +298,7 @@ export function AboutSection() {
         </SlideIn>
       </div>
 
-      <div className="relative z-10">
+      {/* <div className="relative z-10">
         <motion.h3
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -174,8 +315,8 @@ export function AboutSection() {
               Download CV
             </Button>
           </a>
-        </div>
-
+        </div> */}
+      {/*
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {experience.map((job, index) => (
             <AnimatedSection key={job.company} delay={index * 0.1}>
@@ -203,8 +344,110 @@ export function AboutSection() {
               </motion.div>
             </AnimatedSection>
           ))}
-        </div>
-      </div>
+        </div> */}
+
+      {/* <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+          {experience.map((job, index) => (
+            <AnimatedSection key={job.company} delay={index * 0.1}>
+              <motion.div
+                whileHover={{
+                  y: -8,
+                  boxShadow: "0 25px 30px -5px rgba(255, 255, 255, 0.15)",
+                }}
+                className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 hover:bg-white/10 transition-all h-full flex flex-col group"
+              >
+
+                <div className="mb-4 pb-4 border-b border-white/10">
+                  <div className="flex items-start justify-between mb-3">
+                    <div className="flex-1">
+                      <h4 className="text-xl font-bold mb-2 text-white group-hover:text-primary transition-colors">
+                        {job.title}
+                      </h4>
+                      <p className="text-white/80 font-semibold mb-1 flex items-center gap-2">
+                        <Briefcase className="w-4 h-4" />
+                        {job.company}
+                      </p>
+                      {job.location && (
+                        <p className="text-sm text-white/60 flex items-center gap-1.5 mb-2">
+                          <MapPin className="w-3.5 h-3.5" />
+                          {job.location}
+                        </p>
+                      )}
+                    </div>
+
+                  </div>
+                  <span className="text-sm text-white/50 flex items-center gap-1.5">
+                    <Calendar className="w-3.5 h-3.5" />
+                    {job.period}
+                  </span>
+                </div>
+
+
+                <p className="text-white/70 leading-relaxed mb-4 text-sm">
+                  {job.description}
+                </p>
+
+
+                {job.highlights && job.highlights.length > 0 && (
+                  <div className="mb-4">
+                    <h5 className="text-sm font-semibold text-white/90 mb-2 flex items-center gap-2">
+                      <Sparkles className="w-4 h-4 text-primary" />
+                      Key Achievements
+                    </h5>
+                    <ul className="space-y-2">
+                      {job.highlights.slice(0, 3).map((highlight, idx) => (
+                        <li
+                          key={idx}
+                          className="text-xs text-white/60 flex items-start gap-2"
+                        >
+                          <span className="text-primary mt-1">•</span>
+                          <span className="flex-1">{highlight}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    {job.highlights.length > 3 && (
+                      <button
+                        onClick={() => {
+                          // You can implement a modal or expand functionality here
+                        }}
+                        className="text-xs text-primary hover:text-primary/80 mt-2 flex items-center gap-1"
+                      >
+                        +{job.highlights.length - 3} more achievements
+                        <ChevronRight className="w-3 h-3" />
+                      </button>
+                    )}
+                  </div>
+                )}
+
+
+                {job.technologies && job.technologies.length > 0 && (
+                  <div className="mt-auto pt-4 border-t border-white/10">
+                    <div className="flex flex-wrap gap-2">
+                      {job.technologies.slice(0, 5).map((tech) => (
+                        <Badge
+                          key={tech}
+                          variant="secondary"
+                          className="text-xs bg-white/10 text-white/80 border-white/20 hover:bg-white/20"
+                        >
+                          {tech}
+                        </Badge>
+                      ))}
+                      {job.technologies.length > 5 && (
+                        <Badge
+                          variant="outline"
+                          className="text-xs text-white/60 border-white/30"
+                        >
+                          +{job.technologies.length - 5}
+                        </Badge>
+                      )}
+                    </div>
+                  </div>
+                )}
+              </motion.div>
+            </AnimatedSection>
+          ))}
+        </div> */}
+      {/* </div> */}
     </SectionContainer>
   );
 }
