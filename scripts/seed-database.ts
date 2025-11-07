@@ -11,7 +11,7 @@ dotenv.config({ path: join(__dirname, "../.env.local") });
 import { sampleProjects, sampleBlogPosts } from "../lib/seed-data.js";
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-// ✅ Use service role key for seeding (bypasses RLS)
+
 const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 if (!supabaseUrl || !supabaseKey) {
@@ -22,7 +22,7 @@ if (!supabaseUrl || !supabaseKey) {
   process.exit(1);
 }
 
-// ✅ Create client with service role key
+
 const supabase = createClient(supabaseUrl, supabaseKey, {
   auth: {
     autoRefreshToken: false,

@@ -414,17 +414,17 @@ export const sampleBlogPosts = [
     slug: "building-browser-game-frontend-engineer",
     excerpt:
       "A complete guide to building a production-ready browser game using HTML5 Canvas, game loops, collision detection, and performance optimization—no game engine required.",
-    content: `After building three browser games that collectively reached 500K+ players, I learned that frontend engineers have a massive advantage in game development. You already know JavaScript—now let's build something fun[web:21][web:27][web:28].
+    content: `After building three browser games that collectively reached 500K+ players, I learned that frontend engineers have a massive advantage in game development. You already know JavaScript—now let's build something fun.
 
 ## Why Frontend Developers Excel at Game Development
 
-Web games run on the same fundamentals: **render loops**, **state management**, and **event handling**[web:28]. If you've built a React app with animations, you've already done 70% of what game development requires.
+Web games run on the same fundamentals: **render loops**, **state management**, and **event handling**. If you've built a React app with animations, you've already done 70% of what game development requires.
 
-**What we're building**: A "Space Invaders" style game with collision detection, scoring, and progressive difficulty. Playable in 300 lines of code[web:27].
+**What we're building**: A "Space Invaders" style game with collision detection, scoring, and progressive difficulty. Playable in 300 lines of code.
 
 ## Setting Up the Canvas and Game Loop
 
-The Canvas API is your rendering engine[web:25][web:28]:
+The Canvas API is your rendering engine:
 
 \`\`\`html
 <!-- index.html -->
@@ -476,7 +476,7 @@ The Canvas API is your rendering engine[web:25][web:28]:
 
 ## Core Game Architecture: The Rendering Pipeline
 
-Every game needs a **render loop**—the heartbeat of your game[web:28]:
+Every game needs a **render loop**—the heartbeat of your game:
 
 \`\`\`javascript
 // game.js
@@ -567,7 +567,7 @@ function render() {
 gameLoop();
 \`\`\`
 
-**Key insight**: \`requestAnimationFrame\` syncs with the browser's refresh rate (~60 FPS), just like React's rendering[web:28].
+**Key insight**: \`requestAnimationFrame\` syncs with the browser's refresh rate (~60 FPS), just like React's rendering.
 
 ## Player Movement and Input Handling
 
@@ -619,7 +619,7 @@ function shootBullet() {
 
 ## Enemy System with Wave Spawning
 
-Enemies spawn in waves with increasing difficulty[web:27]:
+Enemies spawn in waves with increasing difficulty:
 
 \`\`\`javascript
 function spawnEnemies() {
@@ -674,7 +674,7 @@ function renderEnemies() {
 
 ## Collision Detection: AABB Algorithm
 
-Axis-Aligned Bounding Box (AABB) collision detection—fast and accurate[web:27][web:28]:
+Axis-Aligned Bounding Box (AABB) collision detection—fast and accurate:
 
 \`\`\`javascript
 function checkCollision(rect1, rect2) {
@@ -723,7 +723,7 @@ function checkCollisions() {
 
 ## Particle System for Visual Effects
 
-Particle explosions make your game feel **alive**[web:27]:
+Particle explosions make your game feel **alive**:
 
 \`\`\`javascript
 function createExplosion(x, y) {
@@ -798,7 +798,7 @@ function renderBullets() {
 }
 \`\`\`
 
-**Performance tip**: Always remove entities from arrays when they're no longer visible. Our game never exceeds **200 entities** even after 10+ minutes of play[web:28].
+**Performance tip**: Always remove entities from arrays when they're no longer visible. Our game never exceeds **200 entities** even after 10+ minutes of play.
 
 ## Game State Management
 
@@ -841,7 +841,7 @@ function restartGame() {
 
 ## Mobile Controls with Touch Events
 
-Make your game playable on mobile[web:27]:
+Make your game playable on mobile:
 
 \`\`\`javascript
 let touchStartX = 0;
@@ -909,7 +909,7 @@ function updateBulletsPooled() {
 }
 \`\`\`
 
-**Performance improvement**: Object pooling reduced garbage collection pauses from **16ms to 2ms**[web:28].
+**Performance improvement**: Object pooling reduced garbage collection pauses from **16ms to 2ms**.
 
 ## Adding Sound Effects
 
@@ -942,7 +942,7 @@ Once you have the basics:
 2. **Enemy patterns**: Sinusoidal movement, formations, boss fights
 3. **Parallax backgrounds**: Multiple scrolling layers for depth
 4. **Save system**: LocalStorage for high scores and unlocks
-5. **WebGL upgrade**: Use Three.js or PixiJS for 3D graphics[web:21][web:24]
+5. **WebGL upgrade**: Use Three.js or PixiJS for 3D graphics
 
 ## Production Deployment
 
@@ -967,7 +967,7 @@ Once you have the basics:
 - **Bundle size**: 45KB (gzipped)
 - **Load time**: Under 1 second
 
-Game development is just **interactive frontend development** with a render loop. You already have the skills—now build something fun and addictive[web:21][web:27][web:28].`,
+Game development is just **interactive frontend development** with a render loop. You already have the skills—now build something fun and addictive.`,
     cover_image:
       "https://images.pexels.com/photos/442576/pexels-photo-442576.jpeg?auto=compress&cs=tinysrgb&w=800",
     tags: ["Game Development", "Canvas API", "JavaScript", "Animation"],
@@ -980,11 +980,11 @@ Game development is just **interactive frontend development** with a render loop
     slug: "micro-frontend-architecture-production-guide",
     excerpt:
       "How companies like Netflix and Spotify scale frontend teams with micro-frontends—implementation strategies, module federation, and the patterns that actually work at scale.",
-    content: `After migrating a monolithic frontend (450K lines) to micro-frontends, our team velocity increased **3x** and deployment frequency went from weekly to daily. Here's how we did it[web:31][web:35].
+    content: `After migrating a monolithic frontend (450K lines) to micro-frontends, our team velocity increased **3x** and deployment frequency went from weekly to daily. Here's how we did it.
 
 ## Why Monolithic Frontends Break at Scale
 
-At 50K lines of code, your React app is manageable. At 500K lines with 15 teams? It's a nightmare[web:31]:
+At 50K lines of code, your React app is manageable. At 500K lines with 15 teams? It's a nightmare:
 
 **Problems we faced:**
 - **Build times**: 12 minutes (was killing productivity)
@@ -992,11 +992,11 @@ At 50K lines of code, your React app is manageable. At 500K lines with 15 teams?
 - **Tech debt**: Couldn't upgrade React without coordinating 15 teams
 - **Deployment risk**: One team's bug could break the entire app
 
-Micro-frontends solved all of this[web:31][web:35].
+Micro-frontends solved all of this.
 
 ## What Are Micro-Frontends?
 
-Think microservices, but for the frontend[web:31]. Each team owns a complete vertical slice:
+Think microservices, but for the frontend. Each team owns a complete vertical slice:
 
 \`\`\`
 Traditional Monolith:
@@ -1020,11 +1020,11 @@ Micro-Frontend Architecture:
          └───────────────────┘
 \`\`\`
 
-**Key principle**: Each micro-frontend is **independently deployable**[web:31][web:35].
+**Key principle**: Each micro-frontend is **independently deployable**.
 
 ## Module Federation: The Game Changer
 
-Webpack 5's Module Federation enables runtime code sharing[web:31]:
+Webpack 5's Module Federation enables runtime code sharing:
 
 \`\`\`javascript
 // webpack.config.js - Product micro-frontend
@@ -1048,11 +1048,11 @@ module.exports = {
 };
 \`\`\`
 
-**What this does**: Exposes components at runtime without bundling them into the host app[web:31].
+**What this does**: Exposes components at runtime without bundling them into the host app.
 
 ## Building the Shell Application
 
-The shell orchestrates all micro-frontends[web:31][web:35]:
+The shell orchestrates all micro-frontends:
 
 \`\`\`javascript
 // webpack.config.js - Shell/Host app
@@ -1079,7 +1079,7 @@ module.exports = {
 
 ## Dynamic Remote Loading
 
-Load micro-frontends at runtime based on routes[web:31]:
+Load micro-frontends at runtime based on routes:
 
 \`\`\`tsx
 // App.tsx - Shell application
@@ -1119,7 +1119,7 @@ export default App;
 
 ## Cross-Micro-Frontend Communication
 
-Event-driven architecture for micro-frontend communication[web:35]:
+Event-driven architecture for micro-frontend communication:
 
 \`\`\`typescript
 // eventBus.ts - Shared communication layer
@@ -1237,7 +1237,7 @@ function ProductCard({ product }: Props) {
 
 ## Design System Consistency
 
-Shared component library prevents visual inconsistencies[web:31][web:35]:
+Shared component library prevents visual inconsistencies:
 
 \`\`\`typescript
 // @company/design-system - Separate NPM package
@@ -1263,7 +1263,7 @@ module.exports = {
 
 ## Independent Deployment Pipeline
 
-Each micro-frontend has its own CI/CD[web:31]:
+Each micro-frontend has its own CI/CD:
 
 \`\`\`yaml
 # .github/workflows/deploy-product.yml
@@ -1303,7 +1303,7 @@ jobs:
             }'
 \`\`\`
 
-**Impact**: Product team can deploy **15 times per day** without affecting other teams[web:31].
+**Impact**: Product team can deploy **15 times per day** without affecting other teams.
 
 ## Version Management and Rollback
 
@@ -1345,7 +1345,7 @@ const ProductList = await loadRemoteModule({
 
 ## Error Boundaries for Isolation
 
-Prevent one micro-frontend from crashing the entire app[web:35]:
+Prevent one micro-frontend from crashing the entire app:
 
 \`\`\`tsx
 // ErrorBoundary.tsx
@@ -1442,14 +1442,14 @@ Our results after 6 months:
 
 ## When NOT to Use Micro-Frontends
 
-Micro-frontends add complexity. Don't use them if[web:31][web:35]:
+Micro-frontends add complexity. Don't use them if:
 
 - Small team (< 5 developers)
 - Simple application (< 50K lines)
 - Tight deadline (setup takes 2-4 weeks)
 - Shared business logic is 80%+ of the app
 
-**Rule of thumb**: If you have **one team**, stick with a monolith. Multiple independent teams = micro-frontends[web:31].
+**Rule of thumb**: If you have **one team**, stick with a monolith. Multiple independent teams = micro-frontends.
 
 ## Common Pitfalls and Solutions
 
@@ -1461,7 +1461,7 @@ Micro-frontends add complexity. Don't use them if[web:31][web:35]:
 
 **4. Slow initial load**: Preload critical micro-frontends
 
-Micro-frontends transformed how we work. Teams ship independently, conflicts disappeared, and our deployment confidence went from 60% to 95%[web:31][web:35].`,
+Micro-frontends transformed how we work. Teams ship independently, conflicts disappeared, and our deployment confidence went from 60% to 95%.`,
     cover_image:
       "https://images.pexels.com/photos/325229/pexels-photo-325229.jpeg?auto=compress&cs=tinysrgb&w=800",
     tags: ["Architecture", "Micro-Frontends", "Webpack", "Scalability"],
@@ -1474,7 +1474,7 @@ Micro-frontends transformed how we work. Teams ship independently, conflicts dis
     slug: "jwt-authentication-refresh-tokens-security",
     excerpt:
       "Production-ready JWT authentication with refresh tokens, token rotation, XSS/CSRF protection, and the security patterns used by companies like Auth0 and Firebase.",
-    content: `After implementing authentication for 12+ production apps, I've learned that **basic JWT tutorials are dangerously insecure**. Here's how to do it right[web:36][web:39].
+    content: `After implementing authentication for 12+ production apps, I've learned that **basic JWT tutorials are dangerously insecure**. Here's how to do it right.
 
 ## Why Basic JWT Auth Fails in Production
 
@@ -1485,9 +1485,9 @@ Most tutorials show this:
 localStorage.setItem('token', jwt);
 \`\`\`
 
-**Problem**: localStorage is vulnerable to XSS attacks. One script injection and your tokens are stolen[web:39].
+**Problem**: localStorage is vulnerable to XSS attacks. One script injection and your tokens are stolen.
 
-**The secure pattern**: Short-lived access tokens + httpOnly refresh tokens[web:36][web:39].
+**The secure pattern**: Short-lived access tokens + httpOnly refresh tokens.
 
 ## Understanding the Token Pair Architecture
 
@@ -1509,7 +1509,7 @@ localStorage.setItem('token', jwt);
 └─────────────────────────────────────────┘
 \`\`\`
 
-**Why two tokens?** Short access token limits damage if stolen. Refresh token in httpOnly cookie can't be accessed by JavaScript[web:36][web:39].
+**Why two tokens?** Short access token limits damage if stolen. Refresh token in httpOnly cookie can't be accessed by JavaScript.
 
 ## Backend: Login Endpoint with Token Generation
 
@@ -1685,7 +1685,7 @@ export async function refresh(req: Request, res: Response) {
 }
 \`\`\`
 
-**Key security feature**: Token rotation. Every refresh generates a new refresh token and revokes the old one, preventing token reuse attacks[web:36][web:39].
+**Key security feature**: Token rotation. Every refresh generates a new refresh token and revokes the old one, preventing token reuse attacks.
 
 ## Backend: Logout with Token Revocation
 
@@ -2062,7 +2062,7 @@ Our authentication system handles:
 - **99.97% uptime**
 - **< 50ms token refresh latency**
 
-**Security is not optional**. These patterns are used by Auth0, Firebase, and every major auth provider[web:36][web:39].`,
+**Security is not optional**. These patterns are used by Auth0, Firebase, and every major auth provider.`,
     cover_image:
       "https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg?auto=compress&cs=tinysrgb&w=800",
     tags: ["Security", "Authentication", "JWT", "Backend"],
@@ -2075,13 +2075,13 @@ Our authentication system handles:
     slug: "advanced-react-hooks-custom-patterns",
     excerpt:
       "Master custom React hooks with real-world patterns—data fetching, form handling, intersection observers, and the hooks architecture powering apps like Notion and Linear.",
-    content: `After writing 150+ custom hooks for production apps, I've learned which patterns actually scale and which create maintenance nightmares. Here are the hooks that saved us thousands of lines of code[web:37][web:40].
+    content: `After writing 150+ custom hooks for production apps, I've learned which patterns actually scale and which create maintenance nightmares. Here are the hooks that saved us thousands of lines of code.
 
 ## Why Custom Hooks Are a Superpower
 
-Custom hooks let you extract **stateful logic** into reusable functions[web:37]. The best hooks we wrote reduced component complexity by **60%** and eliminated entire categories of bugs.
+Custom hooks let you extract **stateful logic** into reusable functions. The best hooks we wrote reduced component complexity by **60%** and eliminated entire categories of bugs.
 
-**The golden rule**: If you're using \`useState\` or \`useEffect\` in 3+ components for the same purpose, extract a custom hook[web:37][web:40].
+**The golden rule**: If you're using \`useState\` or \`useEffect\` in 3+ components for the same purpose, extract a custom hook.
 
 ## Pattern 1: Data Fetching Hook with Caching
 
@@ -2191,7 +2191,7 @@ function ProductList() {
 }
 \`\`\`
 
-**Why this works**: Handles loading states, errors, memory leaks, and caching in one reusable hook[web:37][web:40].
+**Why this works**: Handles loading states, errors, memory leaks, and caching in one reusable hook.
 
 ## Pattern 2: Form Handling with Validation
 
@@ -2402,7 +2402,7 @@ function LoginForm() {
 }
 \`\`\`
 
-This hook eliminated **1200+ lines** of form handling code in our app[web:37].
+This hook eliminated **1200+ lines** of form handling code in our app.
 
 ## Pattern 3: Intersection Observer for Lazy Loading
 
@@ -2496,7 +2496,7 @@ function InfiniteList() {
 }
 \`\`\`
 
-**Performance impact**: Reduced initial page load by **40%** with lazy-loaded images[web:37].
+**Performance impact**: Reduced initial page load by **40%** with lazy-loaded images.
 
 ## Pattern 4: Local Storage with SSR Support
 
@@ -2641,7 +2641,7 @@ function SearchBar() {
 }
 \`\`\`
 
-**API calls reduced**: From **847 per minute** to **47 per minute**[web:37][web:40].
+**API calls reduced**: From **847 per minute** to **47 per minute**.
 
 ## Custom Hooks Best Practices
 
@@ -2668,7 +2668,7 @@ Our custom hooks library:
 - **40% faster** feature development
 - **Zero** React warnings in production
 
-Custom hooks are React's most underrated feature. Master them and you'll write cleaner, more maintainable code than 90% of developers[web:37][web:40].`,
+Custom hooks are React's most underrated feature. Master them and you'll write cleaner, more maintainable code than 90% of developers.`,
     cover_image:
       "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=800",
     tags: ["React", "Hooks", "Patterns", "Best Practices"],
@@ -2681,11 +2681,11 @@ Custom hooks are React's most underrated feature. Master them and you'll write c
     slug: "web-performance-optimization-core-web-vitals",
     excerpt:
       "The complete performance optimization playbook—Core Web Vitals, bundle optimization, image strategies, and the techniques that got our Lighthouse score from 34 to 98.",
-    content: `Our marketing site loaded in **4.2 seconds** and had a Lighthouse score of **34**. After 3 months of optimization, we hit **0.8 seconds** and a score of **98**. Here's every technique that worked[web:17][web:20].
+    content: `Our marketing site loaded in **4.2 seconds** and had a Lighthouse score of **34**. After 3 months of optimization, we hit **0.8 seconds** and a score of **98**. Here's every technique that worked.
 
 ## Understanding Core Web Vitals
 
-Google ranks sites based on three metrics[web:20]:
+Google ranks sites based on three metrics:
 
 **1. Largest Contentful Paint (LCP)** - How fast main content loads
 - **Good**: < 2.5s
@@ -2812,7 +2812,7 @@ for img in *.jpg; do
 done
 \`\`\`
 
-**Result**: LCP dropped from **4.8s to 1.2s** (75% improvement)[web:17][web:20].
+**Result**: LCP dropped from **4.8s to 1.2s** (75% improvement).
 
 ## Step 3: Bundle Size Optimization
 
@@ -2853,7 +2853,7 @@ import { format } from 'date-fns';
 import { FaUser, FaSearch } from 'react-icons/fa';
 \`\`\`
 
-**Result**: Bundle size **-76%**, Time to Interactive **-58%**[web:17].
+**Result**: Bundle size **-76%**, Time to Interactive **-58%**.
 
 ## Step 4: Code Splitting Strategy
 
@@ -2934,7 +2934,7 @@ body {
 }
 \`\`\`
 
-**Result**: CLS from **0.32 to 0.04** (87% improvement)[web:20].
+**Result**: CLS from **0.32 to 0.04** (87% improvement).
 
 ## Step 6: Prevent Layout Shift
 
@@ -3104,7 +3104,7 @@ self.addEventListener('fetch', (event) => {
 - Initial load: 14.2s → **2.1s**
 - Time to Interactive: 18.7s → **2.8s**
 
-Performance optimization isn't optional—it's **directly tied to revenue**. Every 100ms improvement in load time increased our conversion rate by **0.7%**[web:17][web:20].`,
+Performance optimization isn't optional—it's **directly tied to revenue**. Every 100ms improvement in load time increased our conversion rate by **0.7%**.`,
     cover_image:
       "https://images.pexels.com/photos/270404/pexels-photo-270404.jpeg?auto=compress&cs=tinysrgb&w=800",
     tags: ["Performance", "Core Web Vitals", "Optimization", "Lighthouse"],
@@ -3117,11 +3117,11 @@ Performance optimization isn't optional—it's **directly tied to revenue**. Eve
     slug: "building-scalable-applications-nextjs-13",
     excerpt:
       "A deep dive into Next.js 13's App Router, Server Components, and streaming—with real code examples, performance metrics, and production lessons learned.",
-    content: `Next.js 13 fundamentally changed how we architect React applications. After migrating three production apps to the App Router, I've learned what works, what doesn't, and the patterns that actually matter[web:1][web:2].
+    content: `Next.js 13 fundamentally changed how we architect React applications. After migrating three production apps to the App Router, I've learned what works, what doesn't, and the patterns that actually matter.
 
 ## Understanding Server Components Architecture
 
-Server Components execute on the server and return compiled JSX to the client[web:2]. This isn't just a rendering strategy—it's a complete paradigm shift. Here's what actually happens:
+Server Components execute on the server and return compiled JSX to the client. This isn't just a rendering strategy—it's a complete paradigm shift. Here's what actually happens:
 
 \`\`\`tsx
 // app/dashboard/page.tsx - Server Component (default)
@@ -3138,7 +3138,7 @@ async function DashboardPage() {
 }
 \`\`\`
 
-**The key insight**: Your component tree can mix server and client components. Server Components handle data fetching and rendering, while Client Components manage interactivity[web:1][web:5].
+**The key insight**: Your component tree can mix server and client components. Server Components handle data fetching and rendering, while Client Components manage interactivity.
 
 ## Data Fetching Patterns That Actually Scale
 
@@ -3162,11 +3162,11 @@ async function Page() {
 }
 \`\`\`
 
-This simple pattern reduced our page load times by **43%** in production[web:2].
+This simple pattern reduced our page load times by **43%** in production.
 
 ## Server Actions: Forms Without JavaScript
 
-Server Actions eliminate the need for API routes in many cases[web:2]:
+Server Actions eliminate the need for API routes in many cases:
 
 \`\`\`tsx
 // app/actions.ts
@@ -3191,11 +3191,11 @@ function NewPostPage() {
 }
 \`\`\`
 
-**Production gotcha**: Server Actions timeout after 60 seconds on Vercel. For long-running operations, use API routes or background jobs[web:8].
+**Production gotcha**: Server Actions timeout after 60 seconds on Vercel. For long-running operations, use API routes or background jobs.
 
 ## Streaming with Suspense: The Game Changer
 
-Streaming transforms how users perceive performance[web:2]:
+Streaming transforms how users perceive performance:
 
 \`\`\`tsx
 import { Suspense } from 'react';
@@ -3215,7 +3215,7 @@ function ProductPage() {
 }
 \`\`\`
 
-Our Time to First Byte (TTFB) stayed under **200ms** while streaming delayed content progressively[web:5].
+Our Time to First Byte (TTFB) stayed under **200ms** while streaming delayed content progressively.
 
 ## Common Pitfalls and Workarounds
 
@@ -3240,7 +3240,7 @@ function ServerPage() {
 
 **2. Environment Variable Confusion**
 
-Server Components can access all env variables. Client Components only see \`NEXT_PUBLIC_*\` variables[web:8]. This caused us a production bug when our API keys leaked into client bundles.
+Server Components can access all env variables. Client Components only see \`NEXT_PUBLIC_*\` variables. This caused us a production bug when our API keys leaked into client bundles.
 
 **3. Route Handler Caching**
 
@@ -3264,7 +3264,7 @@ Migrating our dashboard from Pages Router to App Router:
 
 ## Layout Patterns for Complex Apps
 
-Layouts solve the waterfall problem[web:2]:
+Layouts solve the waterfall problem:
 
 \`\`\`tsx
 // app/layout.tsx - Fetches user data once
@@ -3288,7 +3288,7 @@ async function DashboardLayout() {
 }
 \`\`\`
 
-Each layout fetches its data in parallel, not sequentially[web:2].
+Each layout fetches its data in parallel, not sequentially.
 
 ## When NOT to Use App Router
 
@@ -3298,7 +3298,7 @@ The App Router isn't always the answer:
 - Apps with primarily client-side rendering
 - Teams not ready for the mental model shift
 
-Next.js 13 rewards understanding its architecture. These patterns work because they align with how React Server Components actually operate—not against them[web:1][web:5].`,
+Next.js 13 rewards understanding its architecture. These patterns work because they align with how React Server Components actually operate—not against them.`,
     cover_image:
       "https://images.pexels.com/photos/11035471/pexels-photo-11035471.jpeg?auto=compress&cs=tinysrgb&w=800",
     tags: ["Next.js", "React", "Server Components", "Performance"],
@@ -3311,11 +3311,11 @@ Next.js 13 rewards understanding its architecture. These patterns work because t
     slug: "typescript-best-practices-large-codebases",
     excerpt:
       "Advanced TypeScript patterns that actually scale—utility types, conditional types, and real-world patterns from managing 200K+ line codebases.",
-    content: `TypeScript transformed our 200K+ line codebase from a refactoring nightmare into a maintainable system. Here are the patterns that made the difference[web:6][web:9].
+    content: `TypeScript transformed our 200K+ line codebase from a refactoring nightmare into a maintainable system. Here are the patterns that made the difference.
 
 ## Type-Safe API Responses: The Foundation
 
-Every enterprise app needs bulletproof API handling[web:6]:
+Every enterprise app needs bulletproof API handling:
 
 \`\`\`typescript
 interface User {
@@ -3343,11 +3343,11 @@ function parseUserResponse(response: UserResponse): User {
 }
 \`\`\`
 
-This pattern caught **37 bugs** during our last API migration[web:6].
+This pattern caught **37 bugs** during our last API migration.
 
 ## Discriminated Unions for Error Handling
 
-Stop using \`try/catch\` for expected errors[web:6]:
+Stop using \`try/catch\` for expected errors:
 
 \`\`\`typescript
 type ApiResponse<T, E = string> =
@@ -3380,11 +3380,11 @@ if (result.success) {
 }
 \`\`\`
 
-The compiler ensures you never forget error handling[web:6].
+The compiler ensures you never forget error handling.
 
 ## Template Literal Types: Generate Types from Strings
 
-Build compile-time type safety for event systems[web:6]:
+Build compile-time type safety for event systems:
 
 \`\`\`typescript
 type EventName<T extends string> = \`on\${Capitalize<T>}\`;
@@ -3402,11 +3402,11 @@ function Button(props: ComponentProps) {
 }
 \`\`\`
 
-This powers our entire component event system with zero runtime overhead[web:6].
+This powers our entire component event system with zero runtime overhead.
 
 ## Generic Repository Pattern
 
-Type-safe database operations without code duplication[web:6]:
+Type-safe database operations without code duplication:
 
 \`\`\`typescript
 interface Repository<T, K = string> {
@@ -3431,11 +3431,11 @@ class UserRepository implements Repository<User> {
 }
 \`\`\`
 
-We have **12 repository implementations** sharing this interface[web:6].
+We have **12 repository implementations** sharing this interface.
 
 ## Conditional Types for Flexible APIs
 
-Build APIs that adapt based on options[web:6]:
+Build APIs that adapt based on options:
 
 \`\`\`typescript
 interface User {
@@ -3467,7 +3467,7 @@ console.log(basic.profile.bio); // ❌ TypeScript error
 
 ## Branded Types: Prevent Primitive Obsession
 
-Stop mixing up IDs[web:9]:
+Stop mixing up IDs:
 
 \`\`\`typescript
 type UserId = string & { readonly __brand: 'UserId' };
@@ -3488,7 +3488,7 @@ getUserById(userId); // ✅ Works
 getUserById(postId); // ❌ TypeScript error - prevents bugs
 \`\`\`
 
-This caught **23 ID mixup bugs** during implementation[web:9].
+This caught **23 ID mixup bugs** during implementation.
 
 ## Advanced Utility Type Combinations
 
@@ -3567,7 +3567,7 @@ Our \`tsconfig.json\` for enterprise apps:
 }
 \`\`\`
 
-**Key setting**: \`noUncheckedIndexedAccess\` prevents array access bugs by making array access return \`T | undefined\`[web:9].
+**Key setting**: \`noUncheckedIndexedAccess\` prevents array access bugs by making array access return \`T | undefined\`.
 
 ## Measuring the Impact
 
@@ -3578,7 +3578,7 @@ After implementing these patterns:
 - **Onboarding speed**: New developers productive in 3 days vs 2 weeks
 - **IDE performance**: IntelliSense latency under 100ms even at 200K+ lines
 
-TypeScript's real value isn't preventing typos—it's encoding business logic into types that enforce correctness at compile time[web:6][web:9].`,
+TypeScript's real value isn't preventing typos—it's encoding business logic into types that enforce correctness at compile time.`,
     cover_image:
       "https://images.pexels.com/photos/4164418/pexels-photo-4164418.jpeg?auto=compress&cs=tinysrgb&w=800",
     tags: ["TypeScript", "Software Engineering", "Architecture"],
@@ -3591,7 +3591,7 @@ TypeScript's real value isn't preventing typos—it's encoding business logic in
     slug: "optimizing-react-performance-guide",
     excerpt:
       "Real-world React performance optimization with profiling data, Core Web Vitals improvements, and patterns that reduced our bundle size by 60%.",
-    content: `React performance optimization isn't about memorizing every component—it's about measuring, understanding, and fixing actual bottlenecks. Here's what actually moved the needle[web:7][web:10].
+    content: `React performance optimization isn't about memorizing every component—it's about measuring, understanding, and fixing actual bottlenecks. Here's what actually moved the needle.
 
 ## Profiling Before Optimizing: The Non-Negotiable Rule
 
@@ -3618,11 +3618,11 @@ function App() {
 }
 \`\`\`
 
-This revealed our dashboard's initial render took **847ms**—87% from a single component[web:7].
+This revealed our dashboard's initial render took **847ms**—87% from a single component.
 
 ## Understanding useMemo and useCallback: The Truth
 
-Here's what I learned after profiling 50+ components: **\`useCallback\` alone doesn't prevent re-renders**[web:10].
+Here's what I learned after profiling 50+ components: **\`useCallback\` alone doesn't prevent re-renders**.
 
 \`\`\`tsx
 // ❌ This doesn't help performance
@@ -3640,11 +3640,11 @@ const Child = React.memo(({ onClick }: { onClick: () => void }) => {
 });
 \`\`\`
 
-**The pattern**: \`useCallback\` + \`React.memo\` + expensive child components[web:7][web:10].
+**The pattern**: \`useCallback\` + \`React.memo\` + expensive child components.
 
 ## useMemo for Expensive Computations
 
-Only use \`useMemo\` when profiling proves it's needed[web:7]:
+Only use \`useMemo\` when profiling proves it's needed:
 
 \`\`\`tsx
 function DataTable({ data }: { data: Item[] }) {
@@ -3663,11 +3663,11 @@ function DataTable({ data }: { data: Item[] }) {
 }
 \`\`\`
 
-This reduced our table render time from **340ms to 12ms**[web:7].
+This reduced our table render time from **340ms to 12ms**.
 
 ## Code Splitting: The 60% Bundle Size Reduction
 
-Route-based splitting first—it's the highest ROI[web:17]:
+Route-based splitting first—it's the highest ROI:
 
 \`\`\`tsx
 import { lazy, Suspense } from 'react';
@@ -3695,7 +3695,7 @@ function App() {
 }
 \`\`\`
 
-**Results**: Main bundle 487KB → 189KB (61% reduction), Time to Interactive 4.1s → 1.9s[web:17].
+**Results**: Main bundle 487KB → 189KB (61% reduction), Time to Interactive 4.1s → 1.9s.
 
 ## Component-Level Code Splitting
 
@@ -3723,7 +3723,7 @@ function Dashboard() {
 }
 \`\`\`
 
-Chart library is **only loaded** when users click "Show Analytics"[web:17].
+Chart library is **only loaded** when users click "Show Analytics".
 
 ## Virtual Scrolling: Handling 10,000+ Items
 
@@ -3769,7 +3769,7 @@ function MessageList({ messages }: { messages: Message[] }) {
 
 ## Image Optimization: Core Web Vitals Win
 
-Images are the **#1 cause** of slow LCP (Largest Contentful Paint)[web:17]:
+Images are the **#1 cause** of slow LCP (Largest Contentful Paint):
 
 \`\`\`tsx
 // ❌ Before: 2.3MB PNG, LCP: 4.8s
@@ -3826,7 +3826,7 @@ function SearchBar() {
 }
 \`\`\`
 
-Reduced API calls from **843/minute to 47/minute**[web:7].
+Reduced API calls from **843/minute to 47/minute**.
 
 ## React.memo with Custom Comparison
 
@@ -3870,7 +3870,7 @@ module.exports = withBundleAnalyzer({
 ANALYZE=true npm run build
 \`\`\`
 
-We discovered **moment.js** (232KB) was imported for one date format. Replaced with **date-fns** (12KB) and saved 220KB[web:17].
+We discovered **moment.js** (232KB) was imported for one date format. Replaced with **date-fns** (12KB) and saved 220KB.
 
 ## Real-World Performance Metrics
 
@@ -3882,7 +3882,7 @@ After implementing these optimizations:
 - **Bundle size**: 487KB → 189KB (61% reduction)
 - **Lighthouse score**: 67 → 96
 
-**Key lesson**: Profile first, optimize second. These wins came from fixing **5 components** that caused 90% of performance issues[web:7][web:17][web:20].`,
+**Key lesson**: Profile first, optimize second. These wins came from fixing **5 components** that caused 90% of performance issues.`,
     cover_image:
       "https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=800",
     tags: ["React", "Performance", "Core Web Vitals", "Optimization"],
@@ -3895,11 +3895,11 @@ After implementing these optimizations:
     slug: "modern-css-techniques-tailwind",
     excerpt:
       "How to build maintainable design systems with Tailwind CSS—custom configurations, component patterns, and the dark mode implementation that scaled to 400+ components.",
-    content: `After building three design systems with Tailwind CSS and migrating a 400+ component library, here are the patterns that actually scale[web:11][web:15].
+    content: `After building three design systems with Tailwind CSS and migrating a 400+ component library, here are the patterns that actually scale.
 
 ## Custom Theme Configuration: Beyond Default Colors
 
-Tailwind's power comes from customization. Here's our production theme setup[web:11]:
+Tailwind's power comes from customization. Here's our production theme setup:
 
 \`\`\`javascript
 // tailwind.config.js
@@ -3948,7 +3948,7 @@ module.exports = {
 };
 \`\`\`
 
-This ensures **consistent design tokens** across 400+ components[web:15].
+This ensures **consistent design tokens** across 400+ components.
 
 ## Component Extraction Pattern
 
@@ -4005,7 +4005,7 @@ function Button({ variant = 'primary', size = 'md', children, onClick }: ButtonP
 
 ## Class Variance Authority: Type-Safe Variants
 
-For complex components, use \`cva\` for variant management[web:18]:
+For complex components, use \`cva\` for variant management:
 
 \`\`\`tsx
 import { cva, type VariantProps } from 'class-variance-authority';
@@ -4058,11 +4058,11 @@ function Button({ variant, size, fullWidth, children, onClick }: ButtonProps) {
 </Button>
 \`\`\`
 
-TypeScript autocompletes **all variants** and prevents invalid combinations[web:18].
+TypeScript autocompletes **all variants** and prevents invalid combinations.
 
 ## Dark Mode Implementation That Scales
 
-Our dark mode pattern supports system preference + manual toggle[web:11]:
+Our dark mode pattern supports system preference + manual toggle:
 
 \`\`\`tsx
 // app/providers.tsx
@@ -4123,11 +4123,11 @@ function ThemeToggle() {
 }
 \`\`\`
 
-This pattern works flawlessly across **400+ components** with zero flashing[web:11].
+This pattern works flawlessly across **400+ components** with zero flashing.
 
 ## Responsive Design Patterns
 
-Mobile-first with breakpoint utilities[web:15]:
+Mobile-first with breakpoint utilities:
 
 \`\`\`tsx
 function ProductGrid() {
@@ -4161,7 +4161,7 @@ function Hero() {
 
 ## Custom Utility Classes with @layer
 
-For repeated patterns not covered by Tailwind[web:11]:
+For repeated patterns not covered by Tailwind:
 
 \`\`\`css
 /* styles/globals.css */
@@ -4212,7 +4212,7 @@ Usage:
 
 ## Performance Optimization: PurgeCSS Configuration
 
-Tailwind generates **thousands** of classes. Purge unused ones in production[web:11]:
+Tailwind generates **thousands** of classes. Purge unused ones in production:
 
 \`\`\`javascript
 // tailwind.config.js
@@ -4234,11 +4234,11 @@ module.exports = {
 };
 \`\`\`
 
-**Results**: CSS bundle size **3.2MB → 12KB** in production (99.6% reduction)[web:11].
+**Results**: CSS bundle size **3.2MB → 12KB** in production (99.6% reduction).
 
 ## Animation and Transition Utilities
 
-Custom animations in Tailwind config[web:11]:
+Custom animations in Tailwind config:
 
 \`\`\`javascript
 // tailwind.config.js
@@ -4308,7 +4308,7 @@ Our Tailwind migration results:
 - **Dark mode implementation**: 2 weeks → 3 days
 - **Mobile responsiveness bugs**: 89% reduction
 
-Tailwind CSS isn't just utility classes—it's a constraint-based design system that enforces consistency while maintaining flexibility[web:11][web:15][web:18].`,
+Tailwind CSS isn't just utility classes—it's a constraint-based design system that enforces consistency while maintaining flexibility.`,
     cover_image:
       "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800",
     tags: ["CSS", "Tailwind", "Design Systems", "UI/UX"],
@@ -4321,11 +4321,11 @@ Tailwind CSS isn't just utility classes—it's a constraint-based design system 
     slug: "building-realtime-features-websockets",
     excerpt:
       "From prototype to 100K concurrent connections—WebSocket architecture patterns, scaling strategies, and security implementation for real-time apps.",
-    content: `Building a chat app that handles 100K+ concurrent WebSocket connections taught me what docs don't tell you. Here's the architecture that actually scales[web:16][web:19].
+    content: `Building a chat app that handles 100K+ concurrent WebSocket connections taught me what docs don't tell you. Here's the architecture that actually scales.
 
 ## WebSocket Fundamentals: Why Not HTTP?
 
-HTTP requests are one-way conversations[web:16]. For real-time features, this creates problems:
+HTTP requests are one-way conversations. For real-time features, this creates problems:
 
 \`\`\`typescript
 // ❌ Polling - wasteful, high latency
@@ -4344,7 +4344,7 @@ ws.onmessage = (event) => {
 };
 \`\`\`
 
-**Latency comparison**: Polling ~1000ms, WebSockets ~50ms[web:16].
+**Latency comparison**: Polling ~1000ms, WebSockets ~50ms.
 
 ## Client-Side Implementation with Reconnection
 
@@ -4423,7 +4423,7 @@ class ReconnectingWebSocket {
 }
 \`\`\`
 
-This pattern **prevented 94% of disconnect complaints** in production[web:19].
+This pattern **prevented 94% of disconnect complaints** in production.
 
 ## Server-Side Architecture with Socket.io
 
@@ -4501,7 +4501,7 @@ httpServer.listen(3000);
 
 ## Scaling to 100K+ Concurrent Connections
 
-Single server maxes out around **10K-15K connections**[web:16]. Here's our scaling architecture:
+Single server maxes out around **10K-15K connections**. Here's our scaling architecture:
 
 \`\`\`
 ┌─────────────┐
@@ -4546,7 +4546,7 @@ backend websocket_backend
 
 ## Authentication and Security
 
-Never trust WebSocket connections[web:16][web:19]:
+Never trust WebSocket connections:
 
 \`\`\`typescript
 // Client: Send JWT with connection
@@ -4709,7 +4709,7 @@ Our WebSocket system at scale:
 - **Memory per connection**: ~10KB
 - **CPU usage**: 45% average per server
 
-**Cost optimization**: Redis Pub/Sub enabled horizontal scaling without expensive message brokers[web:16].
+**Cost optimization**: Redis Pub/Sub enabled horizontal scaling without expensive message brokers.
 
 ## When NOT to Use WebSockets
 
@@ -4720,7 +4720,7 @@ WebSockets aren't always the answer:
 - File uploads (use regular HTTP)
 - Simple notifications (use push notifications)
 
-Real-time features are complex. Start with the simplest solution and upgrade when you need it[web:16][web:19].`,
+Real-time features are complex. Start with the simplest solution and upgrade when you need it.`,
     cover_image:
       "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=800",
     tags: ["WebSockets", "Real-Time", "Scalability", "Architecture"],
