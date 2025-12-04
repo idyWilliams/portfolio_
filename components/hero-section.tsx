@@ -2,7 +2,8 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { ArrowRight, Github, Linkedin, Mail, Twitter } from "lucide-react";
+import { ArrowRight, Github, Linkedin, Mail } from "lucide-react";
+import { XIcon } from "@/components/ui/x-icon";
 import { Button } from "@/components/ui/button";
 import hero_img from "@/public/img/landscape.jpeg";
 import portrait from "@/public/img/potrait.jpeg";
@@ -279,9 +280,9 @@ useEffect(() => {
                 label: "LinkedIn",
               },
               {
-                icon: Twitter,
+                icon: XIcon,
                 href: "https://x.com/iWil_lian",
-                label: "Twitter",
+                label: "X",
               },
               {
                 icon: SiMedium,

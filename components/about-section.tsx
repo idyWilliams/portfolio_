@@ -23,13 +23,9 @@ import { AnimatedBackground } from "./animated-background";
 import Link from "next/link";
 import { Badge } from "./ui/badge";
 import { useEffect, useState } from "react";
+import { formatNumber } from "@/lib/utils";
 
-// const stats = [
-//   { icon: Briefcase, label: "Years Experience", value: "5+" },
-//   { icon: Award, label: "Projects Completed", value: "50+" },
-//   { icon: Users, label: "Happy Clients", value: "30+" },
-//   { icon: Coffee, label: "Cups of Coffee", value: "1000+" },
-// ];
+
 
 const experience = [
   {
@@ -175,8 +171,8 @@ export function AboutSection() {
         const data = await response.json();
 
         setStats({
-          commits: data.totalCommits.toLocaleString(),
-          repos: data.totalRepos.toString(),
+          commits: formatNumber(data.totalCommits),
+          repos: formatNumber(data.totalRepos),
           loading: false,
         });
       } catch (error) {

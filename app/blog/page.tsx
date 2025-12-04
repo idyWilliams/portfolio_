@@ -8,8 +8,9 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { AnimatedSection, ScaleIn } from "@/components/animated-section";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, Clock } from "lucide-react";
+import { Calendar, Clock, Eye, Heart } from "lucide-react";
 import { supabase, BlogPost } from "@/lib/supabase";
+import { formatNumber } from "@/lib/utils";
 
 export default function BlogPage() {
   const [posts, setPosts] = useState<BlogPost[]>([]);
@@ -191,6 +192,14 @@ export default function BlogPage() {
                           <span className="flex items-center gap-1">
                             <Clock className="w-4 h-4" />
                             {post.read_time} min read
+                          </span>
+                          <span className="flex items-center gap-1">
+                            <Eye className="w-4 h-4" />
+                            {formatNumber(post.views || 0)}
+                          </span>
+                          <span className="flex items-center gap-1">
+                            <Heart className="w-4 h-4" />
+                            {formatNumber(post.likes || 0)}
                           </span>
                         </div>
 

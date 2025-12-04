@@ -8,8 +8,11 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Calendar, Clock, ArrowLeft } from "lucide-react";
+import { Calendar, Clock, ArrowLeft, Eye } from "lucide-react";
+import { ShareButtons } from "@/components/blog/share-buttons";
+import { LikeButton } from "@/components/blog/like-button";
 import { supabase, BlogPost } from "@/lib/supabase";
+import { formatNumber } from "@/lib/utils";
 import ReactMarkdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
@@ -39,6 +42,28 @@ export default function BlogPostPage() {
     if (params.slug) {
       fetchPost();
     }
+  }, [params.slug]);
+
+  // Increment view count
+  useEffect(() => {
+    const incrementView = async () => {
+      if (!params.slug) return;
+
+      // Check if already viewed in this session to avoid duplicate counts
+      const viewedPosts = JSON.parse(sessionStorage.getItem("viewed_posts") || "[]");
+      if (viewedPosts.includes(params.slug)) return;
+
+      await supabase.rpc("increment_blog_view", {
+        post_slug: params.slug,
+      });
+
+      // Update local state to reflect the new view count
+      setPost((prev) => prev ? { ...prev, views: (prev.views || 0) + 1 } : null);
+
+      sessionStorage.setItem("viewed_posts", JSON.stringify([...viewedPosts, params.slug]));
+    };
+
+    incrementView();
   }, [params.slug]);
 
   if (loading) {
@@ -112,6 +137,10 @@ export default function BlogPostPage() {
                   <Clock className="w-4 h-4" />
                   {post.read_time} min read
                 </span>
+                <span className="flex items-center gap-1">
+                  <Eye className="w-4 h-4" />
+                  {formatNumber(post.views || 0)} views
+                </span>
               </div>
 
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
@@ -124,6 +153,11 @@ export default function BlogPostPage() {
                     {tag}
                   </Badge>
                 ))}
+              </div>
+
+              <div className="flex flex-wrap items-center justify-between gap-4 py-6 border-y border-border">
+                <ShareButtons title={post.title} slug={post.slug} />
+                <LikeButton slug={post.slug} initialLikes={post.likes || 0} />
               </div>
             </div>
 

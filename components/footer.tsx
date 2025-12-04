@@ -3,12 +3,12 @@
 import {
   Github,
   Linkedin,
-  Twitter,
   Mail,
   ArrowUp,
   MapPin,
   CheckCircle2,
 } from "lucide-react";
+import { XIcon } from "@/components/ui/x-icon";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { SiMedium } from "react-icons/si";
@@ -20,7 +20,7 @@ const socialLinks = [
     href: "https://www.linkedin.com/in/idorenyin-williams/",
     label: "LinkedIn",
   },
-  { icon: Twitter, href: "https://x.com/iWil_lian", label: "Twitter" },
+  { icon: XIcon, href: "https://x.com/iWil_lian", label: "X" },
   {
     icon: SiMedium,
     href: "https://medium.com/@idorenyinwilliams",
@@ -42,7 +42,11 @@ const footerLinks = [
     title: "Resources",
     links: [
       { label: "Blog", href: "/blog" },
-      { label: "GitHub", href: "https://github.com/idyWilliams" },
+      {
+        label: "Media",
+        href: "https://techcabal.com/2025/06/14/from-marine-engineering-to-tech-leadership-how-idorenyin-williams-is-shaping-africas-digital-future/",
+        target: "_blank",
+      },
       { label: "Recommendations", href: "/#recommendations" },
       { label: "Contact", href: "/#contact" },
     ],
@@ -54,7 +58,7 @@ const footerLinks = [
         label: "LinkedIn",
         href: "https://www.linkedin.com/in/idorenyin-williams/",
       },
-      { label: "Twitter", href: "https://x.com/iWil_lian" },
+      { label: "X", href: "https://x.com/iWil_lian" },
       { label: "Medium", href: "https://medium.com/@idorenyinwilliams" },
       { label: "GitHub", href: "https://github.com/idyWilliams" },
     ],
@@ -149,6 +153,12 @@ export function Footer() {
                     <li key={link.label}>
                       <motion.a
                         href={link.href}
+                        target={(link as any).target}
+                        rel={
+                          (link as any).target === "_blank"
+                            ? "noopener noreferrer"
+                            : undefined
+                        }
                         className="text-white/60 hover:text-white transition-all inline-flex items-center gap-2 group"
                         whileHover={{ x: 4 }}
                       >

@@ -49,6 +49,8 @@ export interface BlogPost {
   published_at?: string | null;
   created_at: string;
   updated_at: string;
+  views: number;
+  likes: number;
 }
 
 // ✅ Type for creating new projects (without auto-generated fields)
