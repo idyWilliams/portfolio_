@@ -11,6 +11,7 @@ import { Badge } from "@/components/ui/badge";
 import { Calendar, Clock, Eye, Heart } from "lucide-react";
 import { supabase, BlogPost } from "@/lib/supabase";
 import { formatNumber } from "@/lib/utils";
+import { BlogSkeleton } from "@/components/blog/blog-skeleton";
 
 export default function BlogPage() {
   const [posts, setPosts] = useState<BlogPost[]>([]);
@@ -72,8 +73,8 @@ export default function BlogPage() {
                 <button
                   onClick={() => setSelectedTag(null)}
                   className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${selectedTag === null
-                      ? "bg-primary text-primary-foreground"
-                      : "bg-muted hover:bg-muted/80"
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-muted hover:bg-muted/80"
                     }`}
                 >
                   All Posts
@@ -83,8 +84,8 @@ export default function BlogPage() {
                     key={tag}
                     onClick={() => setSelectedTag(tag)}
                     className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${selectedTag === tag
-                        ? "bg-primary text-primary-foreground"
-                        : "bg-muted hover:bg-muted/80"
+                      ? "bg-primary text-primary-foreground"
+                      : "bg-muted hover:bg-muted/80"
                       }`}
                   >
                     {tag}
@@ -95,9 +96,7 @@ export default function BlogPage() {
           )}
 
           {loading ? (
-            <div className="text-center py-20">
-              <p className="text-muted-foreground">Loading posts...</p>
-            </div>
+            <BlogSkeleton />
           ) : filteredPosts.length === 0 ? (
             <div className="text-center py-20">
               <p className="text-muted-foreground">No posts found.</p>

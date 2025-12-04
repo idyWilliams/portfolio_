@@ -122,291 +122,7 @@ export const sampleProjects = [
   },
 ];
 
-// export const sampleBlogPosts = [
-//   {
-//     title: "Building Scalable Applications with Next.js 13",
-//     slug: "building-scalable-applications-nextjs-13",
-//     excerpt:
-//       "Exploring the new features in Next.js 13 and how they enable developers to build more performant and scalable web applications.",
-//     content: `Next.js 13 introduced several groundbreaking features that have transformed how we build modern web applications. In this post, I'll share my experience working with these new features and the benefits they bring to production applications.
 
-// # The App Router Revolution
-
-// The new App Router in Next.js 13 represents a fundamental shift in how we structure our applications. Built on React Server Components, it enables better performance and more intuitive data fetching patterns.
-
-// One of the most significant improvements is the ability to fetch data directly in components without the need for getServerSideProps or getStaticProps. This co-location of data fetching with components makes code more maintainable and easier to understand.
-
-// ## Server Components by Default
-
-// By default, all components in the app directory are Server Components. This means they render on the server and send minimal JavaScript to the client. The performance implications are significant - faster initial page loads and reduced bundle sizes.
-
-// # Improved Developer Experience
-
-// The new file-based routing system is more intuitive and flexible. Creating layouts, loading states, and error boundaries is now as simple as creating the appropriate file in your route directory.
-
-// ## Streaming and Suspense
-
-// Next.js 13 embraces React 18's Suspense for data fetching. This enables progressive rendering where parts of your page can be sent to the client as soon as they're ready, rather than waiting for all data to load.
-
-// The benefits are clear: better perceived performance, more responsive user interfaces, and a better overall user experience.
-
-// # Best Practices
-
-// After working with Next.js 13 in production, here are some key takeaways:
-
-// 1. Embrace Server Components for data fetching and rendering
-// 2. Use Client Components only when you need interactivity
-// 3. Leverage streaming for better performance
-// 4. Structure your app with proper loading and error states
-
-// The future of Next.js is exciting, and these new features set a strong foundation for building modern web applications.`,
-//     cover_image:
-//       "https://images.pexels.com/photos/11035471/pexels-photo-11035471.jpeg?auto=compress&cs=tinysrgb&w=800",
-//     tags: ["Next.js", "React", "Web Development"],
-//     read_time: 8,
-//     published: true,
-//     published_at: new Date("2024-01-15").toISOString(),
-//   },
-//   {
-//     title: "TypeScript Best Practices for Large Codebases",
-//     slug: "typescript-best-practices-large-codebases",
-//     excerpt:
-//       "Essential TypeScript patterns and practices that help maintain code quality and developer productivity in enterprise applications.",
-//     content: `TypeScript has become the de facto standard for building large-scale JavaScript applications. After working on several enterprise projects, I've learned that proper TypeScript usage can make or break a project's maintainability.
-
-// # Type Safety First
-
-// The primary benefit of TypeScript is type safety, but it's easy to undermine this with 'any' types or loose type definitions. In large codebases, strict type checking is essential.
-
-// Enable strict mode in your tsconfig.json. This catches potential bugs early and makes refactoring safer. Yes, it requires more upfront work, but the long-term benefits are substantial.
-
-// ## Utility Types Are Your Friends
-
-// TypeScript's built-in utility types like Partial, Pick, and Omit can save you from writing repetitive type definitions. Learn them well and use them liberally.
-
-// # Organizing Types
-
-// As your codebase grows, type organization becomes crucial. Create dedicated type definition files and share common types across your application.
-
-// ## Domain-Driven Type Organization
-
-// Structure your types around business domains rather than technical concerns. This makes the codebase more intuitive and easier to navigate.
-
-// # Generic Patterns
-
-// Well-designed generic types can make your code more reusable and type-safe. However, overly complex generics can harm readability. Strike a balance.
-
-// Common patterns like Promise<T>, Array<T>, and custom generic utilities should be in every TypeScript developer's toolkit.
-
-// # Testing with TypeScript
-
-// Type definitions don't replace tests, but they do catch entire categories of bugs. Combine TypeScript with comprehensive testing for maximum confidence.
-
-// The investment in learning and properly implementing TypeScript pays dividends in code quality, developer productivity, and long-term maintainability.`,
-//     cover_image:
-//       "https://images.pexels.com/photos/4164418/pexels-photo-4164418.jpeg?auto=compress&cs=tinysrgb&w=800",
-//     tags: ["TypeScript", "Best Practices", "Software Engineering"],
-//     read_time: 7,
-//     published: true,
-//     published_at: new Date("2024-02-20").toISOString(),
-//   },
-//   {
-//     title: "Optimizing React Performance: A Practical Guide",
-//     slug: "optimizing-react-performance-guide",
-//     excerpt:
-//       "Proven techniques and strategies for improving React application performance, from component optimization to bundle size reduction.",
-//     content: `React's declarative nature makes building UIs intuitive, but poor performance can creep in if you're not careful. Here's what I've learned about keeping React apps fast.
-
-// # Understanding React Rendering
-
-// React's virtual DOM is efficient, but unnecessary re-renders are the most common performance issue. Understanding when and why components re-render is the first step to optimization.
-
-// Components re-render when their state changes, their props change, or their parent re-renders. This last point is where many performance issues originate.
-
-// ## Memoization Techniques
-
-// React.memo, useMemo, and useCallback are your tools for preventing unnecessary re-renders. However, premature optimization can make code more complex without meaningful benefits.
-
-// Profile first, optimize second. Use React DevTools Profiler to identify actual bottlenecks rather than optimizing speculatively.
-
-// # Code Splitting
-
-// Large bundle sizes slow down initial page loads. Code splitting allows you to load code on demand, improving time to interactive.
-
-// React.lazy and dynamic imports make code splitting straightforward. Split at route boundaries first - this often provides the biggest wins with minimal effort.
-
-// ## Component-Level Splitting
-
-// For heavy components that aren't always needed, component-level splitting can further improve performance. Modal dialogs and complex visualizations are good candidates.
-
-// # List Virtualization
-
-// Rendering thousands of list items tanks performance. Libraries like react-virtual or react-window render only visible items, making large lists performant.
-
-// # Image Optimization
-
-// Images often account for most of a page's bandwidth. Next.js's Image component provides automatic optimization, but understanding the underlying principles is valuable.
-
-// Use appropriate image formats, implement lazy loading, and serve responsive images. These practices dramatically improve perceived performance.
-
-// Performance optimization is an ongoing process, not a one-time task. Regular profiling and measurement ensure your application stays fast as it grows.`,
-//     cover_image:
-//       "https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=800",
-//     tags: ["React", "Performance", "Optimization"],
-//     read_time: 9,
-//     published: true,
-//     published_at: new Date("2024-03-10").toISOString(),
-//   },
-//   {
-//     title: "Modern CSS Techniques with Tailwind",
-//     slug: "modern-css-techniques-tailwind",
-//     excerpt:
-//       "How Tailwind CSS changed my approach to styling and the patterns I use for building beautiful, maintainable interfaces.",
-//     content: `Tailwind CSS represented a paradigm shift in how I approach styling. After years of writing custom CSS, utility-first CSS felt strange. Now, I can't imagine going back.
-
-// # The Utility-First Mindset
-
-// Traditional CSS encourages creating semantic class names and abstract components. Tailwind takes the opposite approach - compose styles directly in your markup using utility classes.
-
-// This co-location of styles with markup eliminates context switching and makes the relationship between styles and elements explicit. It's faster to read and faster to write.
-
-// ## Maintainability Concerns
-
-// The most common criticism of Tailwind is that it creates verbose, hard-to-maintain markup. In practice, component-based frameworks like React solve this problem elegantly.
-
-// Extract reusable components when patterns emerge. Your markup stays clean, and you maintain all the benefits of utility classes.
-
-// # Responsive Design
-
-// Tailwind's responsive modifiers make building responsive interfaces intuitive. Prefix any utility with a breakpoint to apply it conditionally.
-
-// The mobile-first approach encourages starting with mobile layouts and progressively enhancing for larger screens. This typically results in better mobile experiences.
-
-// ## Dark Mode Support
-
-// Built-in dark mode support via the 'dark:' prefix makes implementing theme switching straightforward. No complex CSS variable juggling required.
-
-// # Custom Design Systems
-
-// Despite being utility-first, Tailwind excels at implementing custom design systems. Configure your theme in tailwind.config.js to match your brand.
-
-// Consistent spacing, colors, and typography across your application become automatic when they're part of your Tailwind theme.
-
-// # Performance
-
-// Tailwind's purge feature removes unused styles in production, resulting in tiny CSS bundles regardless of how many utilities you have available during development.
-
-// The combination of developer experience and production performance makes Tailwind a compelling choice for modern web development.`,
-//     cover_image:
-//       "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800",
-//     tags: ["CSS", "Tailwind", "UI/UX"],
-//     read_time: 6,
-//     published: true,
-//     published_at: new Date("2024-04-05").toISOString(),
-//   },
-//   {
-//     title: "Building Real-Time Features with WebSockets",
-//     slug: "building-realtime-features-websockets",
-//     excerpt:
-//       "A comprehensive guide to implementing real-time functionality in web applications using WebSockets and modern JavaScript.",
-//     content: `Real-time features like live chat, collaborative editing, and live notifications have become table stakes for modern web applications. WebSockets make these features possible.
-
-// # Why WebSockets?
-
-// Traditional HTTP requests are one-directional - the client requests, the server responds. For real-time features, you need bidirectional communication where the server can push updates to clients.
-
-// WebSockets provide a persistent connection between client and server, enabling instant, two-way communication with minimal overhead.
-
-// ## When to Use WebSockets
-
-// Not every feature needs real-time updates. Polling or Server-Sent Events might be simpler for less demanding use cases. Use WebSockets when you need low-latency, bidirectional communication.
-
-// # Implementation Patterns
-
-// On the client side, the WebSocket API is straightforward. Connect, send messages, receive messages. The complexity lies in handling reconnection, message queuing, and state synchronization.
-
-// Libraries like Socket.io abstract many of these concerns and provide fallback mechanisms for browsers without WebSocket support.
-
-// ## Server-Side Considerations
-
-// Your server needs to maintain WebSocket connections, which can be memory-intensive at scale. Horizontal scaling requires careful consideration of how you route messages between server instances.
-
-// Consider using Redis or another pub/sub system to coordinate messages across multiple server instances.
-
-// # Security
-
-// WebSocket security is crucial. Always use wss:// (WebSocket Secure) in production. Implement authentication and authorization - just because a connection is established doesn't mean the client should have full access.
-
-// Validate all messages from clients. Never trust client input, just like with HTTP requests.
-
-// # Testing Real-Time Features
-
-// Testing WebSocket-based features requires different approaches than testing HTTP endpoints. Mock WebSocket connections in your tests, and consider using tools like Socket.io's testing utilities.
-
-// Real-time features add complexity, but when implemented well, they significantly enhance user experience and enable entirely new categories of applications.`,
-//     cover_image:
-//       "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=800",
-//     tags: ["WebSockets", "Real-Time", "Backend"],
-//     read_time: 8,
-//     published: true,
-//     published_at: new Date("2024-05-12").toISOString(),
-//   },
-//   {
-//     title: "Database Design Patterns for Scalable Applications",
-//     slug: "database-design-patterns-scalable-applications",
-//     excerpt:
-//       "Essential database design principles and patterns that help applications scale from prototype to millions of users.",
-//     content: `Database design decisions made early in a project have lasting implications. Here are the patterns and principles I follow when designing databases for applications that need to scale.
-
-// # Start with Normalization
-
-// Normalized databases reduce redundancy and maintain data integrity. Start with a properly normalized schema, then denormalize strategically based on actual performance needs.
-
-// Premature denormalization is a form of premature optimization. Get your data model right first.
-
-// ## Indexing Strategy
-
-// Indexes dramatically improve query performance but come with costs - storage overhead and slower writes. Index columns used in WHERE clauses, JOIN conditions, and ORDER BY clauses.
-
-// Analyze query patterns and create indexes based on actual usage, not speculation.
-
-// # Connection Pooling
-
-// Database connections are expensive. Connection pooling reuses connections, dramatically improving performance and resource utilization.
-
-// Configure pool sizes based on your application's concurrency needs and your database server's capacity.
-
-// ## Read Replicas
-
-// As read traffic grows, a single database becomes a bottleneck. Read replicas distribute read traffic across multiple database instances while maintaining a single primary for writes.
-
-// This pattern works well for read-heavy applications but introduces eventual consistency considerations.
-
-// # Caching Strategies
-
-// Strategic caching reduces database load and improves response times. Cache frequently accessed data that changes infrequently.
-
-// Redis is excellent for this purpose. Implement cache invalidation carefully - stale cache data causes bugs that are hard to debug.
-
-// # Migrations and Versioning
-
-// Schema changes in production require careful planning. Use migration tools to version your schema and make changes reproducible and reversible.
-
-// Never make breaking changes directly. Add new columns as nullable, migrate data, then add constraints. This enables zero-downtime deployments.
-
-// Database design is both art and science. These patterns provide a solid foundation, but every application has unique requirements that may require different approaches.`,
-//     cover_image:
-//       "https://images.pexels.com/photos/1181677/pexels-photo-1181677.jpeg?auto=compress&cs=tinysrgb&w=800",
-//     tags: ["Database", "PostgreSQL", "Architecture"],
-//     read_time: 10,
-//     published: true,
-//     published_at: new Date("2024-06-18").toISOString(),
-//   },
-// ];
-
-// export const additionalBlogPosts = [
-
-// ]
 
 export const sampleBlogPosts = [
   {
@@ -414,7 +130,7 @@ export const sampleBlogPosts = [
     slug: "building-browser-game-frontend-engineer",
     excerpt:
       "A complete guide to building a production-ready browser game using HTML5 Canvas, game loops, collision detection, and performance optimization—no game engine required.",
-    content: `After building three browser games that collectively reached 500K+ players, I learned that frontend engineers have a massive advantage in game development. You already know JavaScript—now let's build something fun.
+    content: `After building three browser games fr fun, I learned that frontend engineers have a massive advantage in game development. You already know JavaScript now let's build something fun.
 
 ## Why Frontend Developers Excel at Game Development
 
@@ -476,7 +192,7 @@ The Canvas API is your rendering engine:
 
 ## Core Game Architecture: The Rendering Pipeline
 
-Every game needs a **render loop**—the heartbeat of your game:
+Every game needs a **render loop** the heartbeat of your game:
 
 \`\`\`javascript
 // game.js
@@ -979,7 +695,7 @@ Game development is just **interactive frontend development** with a render loop
     title: "Micro-Frontend Architecture: Netflix-Style Scalability",
     slug: "micro-frontend-architecture-production-guide",
     excerpt:
-      "How companies like Netflix and Spotify scale frontend teams with micro-frontends—implementation strategies, module federation, and the patterns that actually work at scale.",
+      "How companies like Netflix and Spotify scale frontend teams with micro-frontends implementation strategies, module federation, and the patterns that actually work at scale.",
     content: `After migrating a monolithic frontend (450K lines) to micro-frontends, our team velocity increased **3x** and deployment frequency went from weekly to daily. Here's how we did it.
 
 ## Why Monolithic Frontends Break at Scale
@@ -2074,7 +1790,7 @@ Our authentication system handles:
     title: "Advanced React Hooks: Patterns That Scale",
     slug: "advanced-react-hooks-custom-patterns",
     excerpt:
-      "Master custom React hooks with real-world patterns—data fetching, form handling, intersection observers, and the hooks architecture powering apps like Notion and Linear.",
+      "Master custom React hooks with real-world patterns data fetching, form handling, intersection observers, and the hooks architecture powering apps like Notion and Linear.",
     content: `After writing 150+ custom hooks for production apps, I've learned which patterns actually scale and which create maintenance nightmares. Here are the hooks that saved us thousands of lines of code.
 
 ## Why Custom Hooks Are a Superpower
@@ -2680,7 +2396,7 @@ Custom hooks are React's most underrated feature. Master them and you'll write c
     title: "Web Performance: From 4s to 0.8s Load Time",
     slug: "web-performance-optimization-core-web-vitals",
     excerpt:
-      "The complete performance optimization playbook—Core Web Vitals, bundle optimization, image strategies, and the techniques that got our Lighthouse score from 34 to 98.",
+      "The complete performance optimization playbook Core Web Vitals, bundle optimization, image strategies, and the techniques that got our Lighthouse score from 34 to 98.",
     content: `Our marketing site loaded in **4.2 seconds** and had a Lighthouse score of **34**. After 3 months of optimization, we hit **0.8 seconds** and a score of **98**. Here's every technique that worked.
 
 ## Understanding Core Web Vitals
@@ -3104,7 +2820,7 @@ self.addEventListener('fetch', (event) => {
 - Initial load: 14.2s → **2.1s**
 - Time to Interactive: 18.7s → **2.8s**
 
-Performance optimization isn't optional—it's **directly tied to revenue**. Every 100ms improvement in load time increased our conversion rate by **0.7%**.`,
+Performance optimization isn't optional it's **directly tied to revenue**. Every 100ms improvement in load time increased our conversion rate by **0.7%**.`,
     cover_image:
       "https://images.pexels.com/photos/270404/pexels-photo-270404.jpeg?auto=compress&cs=tinysrgb&w=800",
     tags: ["Performance", "Core Web Vitals", "Optimization", "Lighthouse"],
@@ -3116,12 +2832,12 @@ Performance optimization isn't optional—it's **directly tied to revenue**. Eve
     title: "Building Scalable Applications with Next.js 13",
     slug: "building-scalable-applications-nextjs-13",
     excerpt:
-      "A deep dive into Next.js 13's App Router, Server Components, and streaming—with real code examples, performance metrics, and production lessons learned.",
+      "A deep dive into Next.js 13's App Router, Server Components, and streaming with real code examples, performance metrics, and production lessons learned.",
     content: `Next.js 13 fundamentally changed how we architect React applications. After migrating three production apps to the App Router, I've learned what works, what doesn't, and the patterns that actually matter.
 
 ## Understanding Server Components Architecture
 
-Server Components execute on the server and return compiled JSX to the client. This isn't just a rendering strategy—it's a complete paradigm shift. Here's what actually happens:
+Server Components execute on the server and return compiled JSX to the client. This isn't just a rendering strategy it's a complete paradigm shift. Here's what actually happens:
 
 \`\`\`tsx
 // app/dashboard/page.tsx - Server Component (default)
@@ -3298,7 +3014,7 @@ The App Router isn't always the answer:
 - Apps with primarily client-side rendering
 - Teams not ready for the mental model shift
 
-Next.js 13 rewards understanding its architecture. These patterns work because they align with how React Server Components actually operate—not against them.`,
+Next.js 13 rewards understanding its architecture. These patterns work because they align with how React Server Components actually operate not against them.`,
     cover_image:
       "https://images.pexels.com/photos/11035471/pexels-photo-11035471.jpeg?auto=compress&cs=tinysrgb&w=800",
     tags: ["Next.js", "React", "Server Components", "Performance"],
@@ -3310,7 +3026,7 @@ Next.js 13 rewards understanding its architecture. These patterns work because t
     title: "TypeScript Patterns for Enterprise Codebases",
     slug: "typescript-best-practices-large-codebases",
     excerpt:
-      "Advanced TypeScript patterns that actually scale—utility types, conditional types, and real-world patterns from managing 200K+ line codebases.",
+      "Advanced TypeScript patterns that actually scale utility types, conditional types, and real-world patterns from managing 200K+ line codebases.",
     content: `TypeScript transformed our 200K+ line codebase from a refactoring nightmare into a maintainable system. Here are the patterns that made the difference.
 
 ## Type-Safe API Responses: The Foundation
@@ -3578,7 +3294,7 @@ After implementing these patterns:
 - **Onboarding speed**: New developers productive in 3 days vs 2 weeks
 - **IDE performance**: IntelliSense latency under 100ms even at 200K+ lines
 
-TypeScript's real value isn't preventing typos—it's encoding business logic into types that enforce correctness at compile time.`,
+TypeScript's real value isn't preventing typos it's encoding business logic into types that enforce correctness at compile time.`,
     cover_image:
       "https://images.pexels.com/photos/4164418/pexels-photo-4164418.jpeg?auto=compress&cs=tinysrgb&w=800",
     tags: ["TypeScript", "Software Engineering", "Architecture"],
@@ -3591,7 +3307,7 @@ TypeScript's real value isn't preventing typos—it's encoding business logic in
     slug: "optimizing-react-performance-guide",
     excerpt:
       "Real-world React performance optimization with profiling data, Core Web Vitals improvements, and patterns that reduced our bundle size by 60%.",
-    content: `React performance optimization isn't about memorizing every component—it's about measuring, understanding, and fixing actual bottlenecks. Here's what actually moved the needle.
+    content: `React performance optimization isn't about memorizing every component it's about measuring, understanding, and fixing actual bottlenecks. Here's what actually moved the needle.
 
 ## Profiling Before Optimizing: The Non-Negotiable Rule
 
@@ -3667,7 +3383,7 @@ This reduced our table render time from **340ms to 12ms**.
 
 ## Code Splitting: The 60% Bundle Size Reduction
 
-Route-based splitting first—it's the highest ROI:
+Route-based splitting first it's the highest ROI:
 
 \`\`\`tsx
 import { lazy, Suspense } from 'react';
@@ -3894,8 +3610,8 @@ After implementing these optimizations:
     title: "Mastering Tailwind CSS: Production Patterns",
     slug: "modern-css-techniques-tailwind",
     excerpt:
-      "How to build maintainable design systems with Tailwind CSS—custom configurations, component patterns, and the dark mode implementation that scaled to 400+ components.",
-    content: `After building three design systems with Tailwind CSS and migrating a 400+ component library, here are the patterns that actually scale.
+      "How to build maintainable design systems with Tailwind CSS custom configurations, component patterns, and the dark mode implementation that scaled to 400+ components.",
+    content: `After building design systems with Tailwind CSS and migrating a 40+ component library, here are the patterns that actually scale.
 
 ## Custom Theme Configuration: Beyond Default Colors
 
@@ -4308,7 +4024,7 @@ Our Tailwind migration results:
 - **Dark mode implementation**: 2 weeks → 3 days
 - **Mobile responsiveness bugs**: 89% reduction
 
-Tailwind CSS isn't just utility classes—it's a constraint-based design system that enforces consistency while maintaining flexibility.`,
+Tailwind CSS isn't just utility classes it's a constraint-based design system that enforces consistency while maintaining flexibility.`,
     cover_image:
       "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800",
     tags: ["CSS", "Tailwind", "Design Systems", "UI/UX"],
@@ -4320,8 +4036,8 @@ Tailwind CSS isn't just utility classes—it's a constraint-based design system 
     title: "Building Production WebSocket Systems",
     slug: "building-realtime-features-websockets",
     excerpt:
-      "From prototype to 100K concurrent connections—WebSocket architecture patterns, scaling strategies, and security implementation for real-time apps.",
-    content: `Building a chat app that handles 100K+ concurrent WebSocket connections taught me what docs don't tell you. Here's the architecture that actually scales.
+      "From prototype to concurrent connections. WebSocket architecture patterns, scaling strategies, and security implementation for real-time apps.",
+    content: `Building a chat app that handles concurrent WebSocket connections taught me what docs don't tell you. Here's the architecture that actually scales.
 
 ## WebSocket Fundamentals: Why Not HTTP?
 
@@ -4524,7 +4240,7 @@ Single server maxes out around **10K-15K connections**. Here's our scaling archi
         └───────────┘
 \`\`\`
 
-**Sticky sessions** required—load balancer routes users to same server:
+**Sticky sessions** required load balancer routes users to same server:
 
 \`\`\`nginx
 # HAProxy config

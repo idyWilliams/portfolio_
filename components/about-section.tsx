@@ -191,7 +191,7 @@ export function AboutSection() {
     {
       icon: Briefcase,
       label: "Years Experience",
-      value: "5+",
+      value: "4+",
       color: "text-blue-500",
       link: null,
     },
@@ -266,7 +266,7 @@ export function AboutSection() {
                   className="text-white font-semibold hover:underline"
                   href={"http://internship.isentrytechnologies.com/"}
                 >
-                  iSentry Internshp
+                  iSentry Internship
                 </Link>{" "}
                 came from my desire to give back, to create a space where young
                 developers can gain real-world experience, learn modern
