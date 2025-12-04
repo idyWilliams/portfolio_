@@ -1,8 +1,17 @@
 "use client";
 
-import { Github, Linkedin, Twitter, Mail, ArrowUp, MapPin, CheckCircle2 } from "lucide-react";
+import {
+  Github,
+  Linkedin,
+  Twitter,
+  Mail,
+  ArrowUp,
+  MapPin,
+  CheckCircle2,
+} from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { SiMedium } from "react-icons/si";
 
 const socialLinks = [
   { icon: Github, href: "https://github.com/idyWilliams", label: "GitHub" },
@@ -12,7 +21,11 @@ const socialLinks = [
     label: "LinkedIn",
   },
   { icon: Twitter, href: "https://x.com/iWil_lian", label: "Twitter" },
-  { icon: Mail, href: "mailto:widorenyin0@gmail.com", label: "Email" },
+  {
+    icon: SiMedium,
+    href: "https://medium.com/@idorenyinwilliams",
+    label: "Medium",
+  },
 ];
 
 const footerLinks = [
@@ -42,7 +55,7 @@ const footerLinks = [
         href: "https://www.linkedin.com/in/idorenyin-williams/",
       },
       { label: "Twitter", href: "https://x.com/iWil_lian" },
-      { label: "Email", href: "mailto:widorenyin0@gmail.com" },
+      { label: "Medium", href: "https://medium.com/@idorenyinwilliams" },
       { label: "GitHub", href: "https://github.com/idyWilliams" },
     ],
   },
@@ -77,10 +90,19 @@ export function Footer() {
                 transition={{ duration: 0.6, delay: 0.1 }}
               >
                 <div className="mb-6">
-                  <Image src="/img/LOGO_LIGHT.png" alt="Logo" width={120} height={48} />
+                  <Image
+                    src="/img/LOGO_LIGHT.png"
+                    alt="Logo"
+                    width={120}
+                    height={48}
+                  />
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-2">Idorenyin Williams</h3>
-                <p className="text-sm text-white/60 mb-6">Frontend Engineer & Developer</p>
+                <h3 className="text-2xl font-bold text-white mb-2">
+                  Idorenyin Williams
+                </h3>
+                <p className="text-sm text-white/60 mb-6">
+                  Frontend Engineer & Developer
+                </p>
 
                 <div className="space-y-3 mb-8">
                   <div className="flex items-center gap-2 text-sm text-white/80">
@@ -155,7 +177,8 @@ export function Footer() {
               transition={{ duration: 0.6, delay: 0.5 }}
               className="text-sm text-white/50 text-center sm:text-left"
             >
-              &copy; {currentYear} Idorenyin Williams. Crafted with precision using Next.js &amp; TypeScript.
+              &copy; {currentYear} Idorenyin Williams. Crafted with precision
+              using Next.js &amp; TypeScript.
             </motion.p>
 
             <motion.button

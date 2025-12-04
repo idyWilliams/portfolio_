@@ -203,7 +203,7 @@ export function ContactSection() {
                   </p>
                 </div>
                 <div>
-                  <p className="text-2xl font-bold text-primary">5+ Years</p>
+                  <p className="text-2xl font-bold text-primary">4+ Years</p>
                   <p className="text-sm text-muted-foreground">Experience</p>
                 </div>
               </div>

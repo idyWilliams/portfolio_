@@ -246,7 +246,7 @@ export function AboutSection() {
               className="space-y-4 text-lg text-white/70 leading-relaxed"
             >
               <p>
-                I&apos;m a passionate full-stack engineer with over 5 years of
+                I&apos;m a passionate frontend software engineer with over 4 years of
                 experience building exceptional digital experiences. My journey
                 in software development has been driven by a love for creating
                 elegant solutions to complex problems.
@@ -268,11 +268,11 @@ export function AboutSection() {
                 Founding{" "}
                 <Link
                   className="text-white font-semibold hover:underline"
-                  href={"#"}
+                  href={"http://internship.isentrytechnologies.com/"}
                 >
                   iSentry Internshp
                 </Link>{" "}
-                came from my desire to give back to create a space where young
+                came from my desire to give back, to create a space where young
                 developers can gain real-world experience, learn modern
                 engineering practices, and build impactful products. Mentorship
                 and collaboration sit at the heart of everything I do; I love
@@ -280,7 +280,7 @@ export function AboutSection() {
               </p>
 
               <p>
-                Beyond my daily work, I’m deeply fascinated by{" "}
+                Beyond my daily work, I&apos;m deeply fascinated by{" "}
                 <span className="text-white font-semibold">
                   Artificial Intelligence
                 </span>{" "}
@@ -292,9 +292,9 @@ export function AboutSection() {
 
               <p>
                 Whether it&apos;s building a product, mentoring a team, or
-                speaking at any event, I&apos;m driven by one simple goal — to
-                create, to inspire, and to push the boundaries of what&apos;s
-                possible through technology.
+                speaking at any event, I&apos;m driven by one simple goal which
+                is "to create, to inspire, and to push the boundaries of
+                what&apos;s possible through technology".
               </p>
             </motion.div>
 

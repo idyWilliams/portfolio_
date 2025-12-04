@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import hero_img from "@/public/img/landscape.jpeg";
 import portrait from "@/public/img/potrait.jpeg";
 import { useState, useEffect } from "react";
+import { SiMedium } from "react-icons/si";
 
 export function HeroSection() {
   const [showInitials, setShowInitials] = useState(false);
@@ -220,7 +221,7 @@ useEffect(() => {
             transition={{ duration: 0.5, delay: 0.4 }}
             className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight mb-6 text-white/90"
           >
-            Senior Frontend Engineer
+            Senior Frontend Software Engineer
           </motion.h2>
 
           <motion.p
@@ -230,7 +231,7 @@ useEffect(() => {
             className="text-xl sm:text-2xl text-white/70 mb-8 max-w-3xl mx-auto leading-relaxed"
           >
             Building exceptional web experiences with Next.js, TypeScript, and
-            modern tech stacks. 5+ years of crafting scalable solutions for
+            modern tech stacks. 4+ years of crafting scalable solutions for
             businesses worldwide.
           </motion.p>
 
@@ -283,9 +284,9 @@ useEffect(() => {
                 label: "Twitter",
               },
               {
-                icon: Mail,
-                href: "mailto:widorenyin0@gmail.com",
-                label: "Email",
+                icon: SiMedium,
+                href: "https://medium.com/@idorenyinwilliams",
+                label: "Medium",
               },
             ].map((social, index) => (
               <motion.a
